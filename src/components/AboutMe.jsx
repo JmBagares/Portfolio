@@ -29,7 +29,7 @@ export default function AboutMe() {
       />
       <StreetArtLayer sectionId="about" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-20">
         {/* Section header */}
         <motion.div
           className="mb-16"
