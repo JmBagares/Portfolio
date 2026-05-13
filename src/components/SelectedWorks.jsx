@@ -117,6 +117,20 @@ const projects = [
   },
 ]
 
+function getCardDescription(description, maxLength = 150) {
+  if (description.length <= maxLength) {
+    return description
+  }
+
+  const trimmedDescription = description.slice(0, maxLength).trimEnd()
+  const lastWordBoundary = trimmedDescription.lastIndexOf(' ')
+  const safeDescription = lastWordBoundary > 0
+    ? trimmedDescription.slice(0, lastWordBoundary)
+    : trimmedDescription
+
+  return `${safeDescription}.....`
+}
+
 function ProjectCard({ project, index, onOpenProject }) {
   const { theme } = useTheme()
   const cardRef = useRef(null)
@@ -140,6 +154,7 @@ function ProjectCard({ project, index, onOpenProject }) {
     : project.links?.length
       ? 'View Project'
       : 'View Details'
+  const cardDescription = getCardDescription(project.description)
 
   useEffect(() => {
     if (!hasPhonePreview || !isPhonePreviewOpen || project.phoneSlides.length < 2) {
@@ -191,8 +206,10 @@ function ProjectCard({ project, index, onOpenProject }) {
   return (
     <motion.div
       ref={cardRef}
+      layout
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
+      exit={{ opacity: 0, y: 24 }}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="group selected-works__item"
     >
@@ -414,7 +431,7 @@ function ProjectCard({ project, index, onOpenProject }) {
             {project.title}
           </h3>
           <p className="selected-works__summary text-sm leading-6 m-0" style={{ color: 'var(--card-muted)' }}>
-            {project.description}
+            {cardDescription}
           </p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -627,6 +644,8 @@ export default function SelectedWorks() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const [activeProject, setActiveProject] = useState(null)
+  const [showAllProjects, setShowAllProjects] = useState(false)
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 4)
 
   useEffect(() => {
     if (!activeProject) {
@@ -671,11 +690,38 @@ export default function SelectedWorks() {
             Selected Works
           </h2>
         </motion.div>
-        <div className="selected-works__grid">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} onOpenProject={setActiveProject} />
-          ))}
+        <div id="selected-works-grid" className="selected-works__grid">
+          <AnimatePresence initial={false}>
+            {visibleProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} onOpenProject={setActiveProject} />
+            ))}
+          </AnimatePresence>
         </div>
+        {projects.length > 4 ? (
+          <motion.div
+            className="mt-10 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <button
+              type="button"
+              className="magnetic-btn rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5"
+              style={{
+                background: 'var(--t-btn-bg)',
+                color: 'var(--t-btn-text)',
+                borderRadius: 'var(--t-btn-radius)',
+                border: '1px solid var(--button-border)',
+                boxShadow: 'var(--t-btn-shadow)',
+              }}
+              onClick={() => setShowAllProjects((currentState) => !currentState)}
+              aria-expanded={showAllProjects}
+              aria-controls="selected-works-grid"
+            >
+              {showAllProjects ? 'Show Less' : 'Show More'}
+            </button>
+          </motion.div>
+        ) : null}
       </div>
 
       <AnimatePresence>

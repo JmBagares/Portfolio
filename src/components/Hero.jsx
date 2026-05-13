@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Particles from './Particles'
 import MagneticButton from './MagneticButton'
 import { useTheme } from '../theme/ThemeContext'
+import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
 
 const GridScan = lazy(() => import('./GridScan'))
 const Dither = lazy(() => import('./Dither'))
@@ -134,9 +135,19 @@ export default function Hero() {
           </motion.p>
 
           <motion.div className="hero-cta-wrap" variants={heroItemVariants}>
-            <MagneticButton onClick={scrollToWorks}>
-              View Selected Works
-            </MagneticButton>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <MagneticButton onClick={scrollToWorks}>
+                View Selected Works
+              </MagneticButton>
+              <MagneticButton
+                href={cvFile}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="View Jan Manuel Bagares CV in a new tab"
+              >
+                View CV
+              </MagneticButton>
+            </div>
           </motion.div>
         </motion.div>
       </div>
