@@ -17,7 +17,7 @@ import eminemConcertVideo from '../assets/streets/eminem-concert.mp4'
 import filthyFrankTeethVideo from '../assets/streets/filthy-frank-teeth.mp4'
 import iceCubeVideo from '../assets/streets/ice-cube.mp4'
 import iceImage from '../assets/streets/ice.png'
-import missinBackground from '../assets/BG/MissinyouCrazyBG.png'
+import missinBackground from '../assets/BG/russ.jpg'
 import writeThisDownBackground from '../assets/BG/WritethisDownBG.jpg'
 
 const picture = (id, src, className, frameVariant, animate) => ({

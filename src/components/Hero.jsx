@@ -121,7 +121,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.h1 className="hero-title" style={{ fontFamily: titleFont }} variants={heroItemVariants}>
+          <motion.h1 className="hero-title hero-title--single-line" style={{ fontFamily: titleFont }} variants={heroItemVariants}>
             Jan Manuel Bagares
           </motion.h1>
 
@@ -130,7 +130,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.p className="hero-description" variants={heroItemVariants}>
-            Solving problems through code and hardware. 24-year-old BSCS student specializing in React Native, UI/UX, and PC maintenance.
+            Building responsive apps, clean UI, and reliable tech solutions with confidence and purpose.
           </motion.p>
 
           <motion.div className="hero-cta-wrap" variants={heroItemVariants}>

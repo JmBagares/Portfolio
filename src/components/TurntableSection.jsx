@@ -53,7 +53,7 @@ export default function TurntableSection() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="music-section__intro music-section__intro--compact mb-8 md:mb-10">
-          <span className="theme-label text-sm font-semibold uppercase tracking-[0.3em] block">Music</span>
+          <span className="theme-label text-3xl md:text-5xl font-semibold uppercase tracking-[0.16em] block">Music</span>
           <p className="m-0 text-sm md:text-base leading-7" style={{ color: 'var(--text-muted)' }}>
             Choose a song to change the theme. Drag a sleeve onto the platter, or tap an album cover to load it.
           </p>

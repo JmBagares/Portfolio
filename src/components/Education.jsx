@@ -14,8 +14,8 @@ const education = [
   {
     id: 2,
     school: 'University of Perpetual Help System DALTA — Las Piñas Campus',
-    degree: 'Senior High School (STEM Strand)',
-    period: 'Graduated: 2022',
+    degree: 'Senior High School (ICT Strand)',
+    period: 'Graduated: 2020',
     current: false,
     color: '#8ACBD0',
   },
@@ -43,7 +43,7 @@ export default function Education() {
             Education
           </h2>
         </motion.div>
-
+        
         {/* Timeline */}
         <div className="relative max-w-2xl mx-auto">
           {/* Vertical line */}

@@ -7,6 +7,9 @@ import petSosPreviewTwo from '../assets/Projects/PetSOS/2.jpg'
 import petSosPreviewThree from '../assets/Projects/PetSOS/3.jpg'
 import petSosPreviewFour from '../assets/Projects/PetSOS/4.jpg'
 import enrollmentPreview from '../assets/Projects/enrollment.png'
+import enrollmentPreviewTwo from '../assets/Projects/enrollment2.png'
+import enrollmentPreviewThree from '../assets/Projects/enrollment3.png'
+import enrollmentPreviewFour from '../assets/Projects/enrollment4.png'
 import gamePreviewOne from '../assets/Projects/game1.png'
 import gamePreviewTwo from '../assets/Projects/game2.png'
 import magnavalPreview from '../assets/Projects/magnaval.png'
@@ -23,6 +26,12 @@ const projects = [
     status: 'Thesis Project',
     color: '#56B6C6',
     image: petSosPreviewOne,
+    previews: [
+      { src: petSosPreviewOne, alt: 'PetSOS mobile screen one' },
+      { src: petSosPreviewTwo, alt: 'PetSOS mobile screen two' },
+      { src: petSosPreviewThree, alt: 'PetSOS mobile screen three' },
+      { src: petSosPreviewFour, alt: 'PetSOS mobile screen four' },
+    ],
     phoneSlides: [
       { src: petSosPreviewOne, alt: 'PetSOS mobile screen one' },
       { src: petSosPreviewTwo, alt: 'PetSOS mobile screen two' },
@@ -38,6 +47,10 @@ const projects = [
     tags: ['WordPress', 'Elementor', 'Responsive Design', 'Theme Customization'],
     status: 'Live Websites',
     color: '#D4AF37',
+    previews: [
+      { src: magnavalPreview, alt: 'Magnaval Services website preview' },
+      { src: warduzPreview, alt: 'Warduz Pet Shop website preview' },
+    ],
     images: [
       { src: magnavalPreview, alt: 'Magnaval Services website preview' },
       { src: warduzPreview, alt: 'Warduz Pet Shop website preview' },
@@ -56,6 +69,12 @@ const projects = [
     status: 'Frontend Build',
     color: '#8ACBD0',
     image: enrollmentPreview,
+    previews: [
+      { src: enrollmentPreview, alt: 'Enrollment System front end preview' },
+      { src: enrollmentPreviewTwo, alt: 'Enrollment System front end preview two' },
+      { src: enrollmentPreviewThree, alt: 'Enrollment System front end preview three' },
+      { src: enrollmentPreviewFour, alt: 'Enrollment System front end preview four' },
+    ],
     links: [
       { label: 'View on GitHub', href: 'https://github.com/JmBagares/Enrollment-System' },
     ],
@@ -68,6 +87,10 @@ const projects = [
     tags: ['Godot', '2D Game Development', 'Scene Design', 'Gameplay Logic'],
     status: 'Game Project',
     color: '#D4AF37',
+    previews: [
+      { src: gamePreviewOne, alt: "Adventurer's Quest gameplay preview one" },
+      { src: gamePreviewTwo, alt: "Adventurer's Quest gameplay preview two" },
+    ],
     images: [
       { src: gamePreviewOne, alt: "Adventurer's Quest gameplay preview one" },
       { src: gamePreviewTwo, alt: "Adventurer's Quest gameplay preview two" },
@@ -85,15 +108,19 @@ const projects = [
     status: 'Subject Project',
     color: '#56B6C6',
     image: webItPreview,
+    previews: [
+      { src: webItPreview, alt: 'WebIT website preview' },
+    ],
     links: [
       { label: 'Visit Website', href: 'https://webit-fj6kgkjsx-jmbagares-projects.vercel.app/' },
     ],
   },
 ]
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, onOpenProject }) {
   const { theme } = useTheme()
   const cardRef = useRef(null)
+  const [isCardHovered, setIsCardHovered] = useState(false)
   const [isPhonePreviewOpen, setIsPhonePreviewOpen] = useState(false)
   const [activePhoneSlideIndex, setActivePhoneSlideIndex] = useState(0)
   const isInView = useInView(cardRef, { once: true, margin: '-50px' })
@@ -108,6 +135,11 @@ function ProjectCard({ project, index }) {
   const hasImageGrid = previewImages.length > 1
   const hasPhonePreview = project.phoneSlides?.length > 0
   const activePhoneSlide = hasPhonePreview ? project.phoneSlides[activePhoneSlideIndex] : null
+  const hoverChipLabel = hasPhonePreview
+    ? 'Open Preview'
+    : project.links?.length
+      ? 'View Project'
+      : 'View Details'
 
   useEffect(() => {
     if (!hasPhonePreview || !isPhonePreviewOpen || project.phoneSlides.length < 2) {
@@ -129,17 +161,6 @@ function ProjectCard({ project, index }) {
     setIsPhonePreviewOpen((currentState) => !currentState)
   }
 
-  const handlePhonePreviewKeyDown = (event) => {
-    if (!hasPhonePreview) {
-      return
-    }
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      togglePhonePreview()
-    }
-  }
-
   const changePhoneSlide = (direction) => {
     if (!hasPhonePreview) {
       return
@@ -155,6 +176,18 @@ function ProjectCard({ project, index }) {
     setActivePhoneSlideIndex(slideIndex)
   }
 
+  const handleCardClick = (event) => {
+    if (event.target.closest('a, button')) {
+      return
+    }
+
+    if (hasPhonePreview) {
+      return
+    }
+
+    onOpenProject(project)
+  }
+
   return (
     <motion.div
       ref={cardRef}
@@ -164,19 +197,16 @@ function ProjectCard({ project, index }) {
       className="group selected-works__item"
     >
       <motion.div
-        className="glass-card selected-works__card overflow-hidden h-full flex flex-col"
+        className={`glass-card selected-works__card overflow-hidden h-full flex flex-col ${hasPhonePreview ? '' : 'cursor-pointer'}`}
         animate={theme.motion.floatY || {}}
         whileHover={theme.motion.cardHover}
         transition={theme.motion.cardSpring}
+        onHoverStart={() => setIsCardHovered(true)}
+        onHoverEnd={() => setIsCardHovered(false)}
+        onClick={handleCardClick}
       >
         <div
-          className={`relative overflow-hidden rounded-t-[24px] transition-[height] duration-500 ease-out ${hasPhonePreview && isPhonePreviewOpen ? 'h-168 sm:h-156 md:h-156 lg:h-160' : 'h-60 md:h-65'} ${hasPhonePreview ? 'cursor-pointer' : ''}`}
-          role={hasPhonePreview ? 'button' : undefined}
-          tabIndex={hasPhonePreview ? 0 : undefined}
-          aria-expanded={hasPhonePreview ? isPhonePreviewOpen : undefined}
-          aria-label={hasPhonePreview ? `${isPhonePreviewOpen ? 'Hide' : 'Open'} ${project.title} phone preview` : undefined}
-          onClick={hasPhonePreview ? togglePhonePreview : undefined}
-          onKeyDown={hasPhonePreview ? handlePhonePreviewKeyDown : undefined}
+          className={`relative overflow-hidden rounded-t-[24px] transition-[height] duration-500 ease-out ${hasPhonePreview && isPhonePreviewOpen ? 'h-168 sm:h-156 md:h-156 lg:h-160' : 'h-60 md:h-65'}`}
         >
           {hasPhonePreview && isPhonePreviewOpen ? (
             <div
@@ -280,8 +310,8 @@ function ProjectCard({ project, index }) {
                   alt={image.alt}
                   className="h-full w-full rounded-[18px] object-cover"
                   style={{ y: imageY }}
-                  whileHover={{ scale: 1.04 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  animate={{ scale: isCardHovered ? 1.04 : 1 }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 />
               ))}
             </div>
@@ -291,21 +321,60 @@ function ProjectCard({ project, index }) {
               alt={previewImages[0].alt}
               className="w-full h-full object-cover"
               style={{ y: imageY }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              animate={{ scale: isCardHovered ? 1.05 : 1 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             />
           )}
           {!isPhonePreviewOpen ? (
             <motion.div
-              className="absolute inset-0 flex items-end p-6"
-              initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                background: `linear-gradient(to top, color-mix(in srgb, var(--overlay-scrim) 82%, ${projectTone} 18%) 0%, transparent 65%)`,
-                backdropFilter: 'blur(4px)',
-              }}
+              className="pointer-events-none absolute inset-0"
+              initial={false}
+              animate={isCardHovered ? 'hover' : 'rest'}
             >
-              <p className="text-sm font-light leading-relaxed" style={{ color: 'var(--cover-text)' }}>{project.description}</p>
+              <motion.div
+                className="absolute inset-0"
+                variants={{
+                  rest: { opacity: 0.18 },
+                  hover: { opacity: 1 },
+                }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                style={{
+                  background: `linear-gradient(180deg, color-mix(in srgb, ${projectTone} 12%, transparent) 0%, transparent 34%, color-mix(in srgb, var(--overlay-scrim) 82%, ${projectTone} 18%) 100%)`,
+                }}
+              />
+              <motion.div
+                className="absolute inset-3 rounded-[20px]"
+                variants={{
+                  rest: { opacity: 0.2, scale: 0.985 },
+                  hover: { opacity: 0.92, scale: 1 },
+                }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  border: `1px solid color-mix(in srgb, ${projectTone} 58%, rgba(255,255,255,0.2))`,
+                  boxShadow: `0 0 0 1px color-mix(in srgb, ${projectTone} 18%, transparent), inset 0 0 0 1px rgba(255,255,255,0.08)`,
+                }}
+              />
+              <motion.div
+                className="selected-works__hover-chip absolute right-4 top-4 inline-flex items-center gap-2 rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em]"
+                variants={{
+                  rest: { opacity: 0, x: 10, y: -8 },
+                  hover: { opacity: 1, x: 0, y: 0 },
+                }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  backgroundColor: `color-mix(in srgb, var(--badge-bg) 84%, ${projectTone} 16%)`,
+                  color: 'var(--badge-text)',
+                  border: `1px solid color-mix(in srgb, var(--badge-border) 74%, ${projectTone} 26%)`,
+                  boxShadow: '0 16px 30px rgba(0,0,0,0.18)',
+                  backdropFilter: 'blur(12px)',
+                }}
+              >
+                <span>{hoverChipLabel}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17L17 7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M9 7H17V15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
             </motion.div>
           ) : null}
           {hasPhonePreview && !isPhonePreviewOpen ? (
@@ -316,7 +385,7 @@ function ProjectCard({ project, index }) {
                 border: `1px solid color-mix(in srgb, var(--badge-border) 72%, ${projectTone} 28%)`,
               }}
             >
-              Tap To Open App Preview
+              Interactive Preview
             </div>
           ) : null}
         </div>
@@ -396,10 +465,197 @@ function ProjectCard({ project, index }) {
   )
 }
 
+function ProjectModal({ project, onClose }) {
+  const [activePreviewIndex, setActivePreviewIndex] = useState(0)
+
+  if (!project) {
+    return null
+  }
+
+  const previews = project.previews?.length
+    ? project.previews
+    : project.images?.length
+      ? project.images
+      : [{ src: project.image, alt: `${project.title} preview` }]
+  const activePreview = previews[activePreviewIndex] ?? previews[0]
+  const modalTitleId = `selected-works-modal-title-${project.id}`
+  const modalDescriptionId = `selected-works-modal-description-${project.id}`
+
+  return (
+    <motion.div
+      className="selected-works-modal-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="glass-card selected-works-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={modalTitleId}
+        aria-describedby={modalDescriptionId}
+        initial={{ opacity: 0, y: 20, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 18, scale: 0.98 }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="selected-works-modal__content">
+          <div className="selected-works-modal__header">
+            <div className="selected-works-modal__heading-copy">
+              <div className="selected-works-modal__eyebrow-row">
+                <span className="selected-works-modal__eyebrow" style={{ borderLeft: `3px solid ${project.color}`, paddingLeft: '0.65rem' }}>
+                  {project.category}
+                </span>
+                {project.status ? (
+                  <span
+                    className="selected-works-modal__status"
+                    style={{
+                      backgroundColor: `color-mix(in srgb, var(--status-bg) 82%, ${project.color} 18%)`,
+                      color: 'var(--status-text)',
+                      border: `1px solid color-mix(in srgb, var(--badge-border) 74%, ${project.color} 26%)`,
+                    }}
+                  >
+                    {project.status}
+                  </span>
+                ) : null}
+              </div>
+              <h3 id={modalTitleId} className="selected-works-modal__title">
+                {project.title}
+              </h3>
+            </div>
+
+            <button
+              type="button"
+              className="selected-works-modal__close"
+              aria-label={`Close ${project.title} project details`}
+              onClick={onClose}
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div className="selected-works-modal__body">
+            <div className="selected-works-modal__preview-column">
+              <div className="selected-works-modal__preview-shell">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activePreview.src}
+                    src={activePreview.src}
+                    alt={activePreview.alt}
+                    className="selected-works-modal__preview-image"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.24, ease: 'easeOut' }}
+                  />
+                </AnimatePresence>
+              </div>
+
+              {previews.length > 1 ? (
+                <div className="selected-works-modal__thumb-row" aria-label={`${project.title} preview images`}>
+                  {previews.map((preview, previewIndex) => (
+                    <button
+                      key={preview.src}
+                      type="button"
+                      className={`selected-works-modal__thumb ${previewIndex === activePreviewIndex ? 'selected-works-modal__thumb--active' : ''}`}
+                      aria-label={`Show preview ${previewIndex + 1} for ${project.title}`}
+                      onClick={() => setActivePreviewIndex(previewIndex)}
+                    >
+                      <img src={preview.src} alt="" aria-hidden="true" />
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="selected-works-modal__details">
+              <p id={modalDescriptionId} className="selected-works-modal__description">
+                {project.description}
+              </p>
+
+              {project.tags?.length ? (
+                <div className="selected-works-modal__section">
+                  <span className="selected-works-modal__section-label">Tech Stack</span>
+                  <div className="selected-works-modal__tag-row">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="selected-works-modal__tag"
+                        style={{
+                          backgroundColor: `color-mix(in srgb, var(--badge-bg) 82%, ${project.color} 18%)`,
+                          color: 'var(--badge-text)',
+                          border: `1px solid color-mix(in srgb, var(--badge-border) 70%, ${project.color} 30%)`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {project.links?.length ? (
+                <div className="selected-works-modal__section">
+                  <span className="selected-works-modal__section-label">Project Links</span>
+                  <div className="selected-works-modal__link-row">
+                    {project.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="selected-works-modal__link"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function SelectedWorks() {
-  const { theme } = useTheme()
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
+  const [activeProject, setActiveProject] = useState(null)
+
+  useEffect(() => {
+    if (!activeProject) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    const previousPaddingRight = document.body.style.paddingRight
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+
+    document.body.style.overflow = 'hidden'
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setActiveProject(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
+      document.body.style.paddingRight = previousPaddingRight
+    }
+  }, [activeProject])
 
   return (
     <section id="selected-works" className="selected-works-section py-24 md:py-36 relative overflow-hidden" ref={sectionRef}>
@@ -417,10 +673,14 @@ export default function SelectedWorks() {
         </motion.div>
         <div className="selected-works__grid">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.id} project={project} index={index} onOpenProject={setActiveProject} />
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {activeProject ? <ProjectModal key={activeProject.id} project={activeProject} onClose={() => setActiveProject(null)} /> : null}
+      </AnimatePresence>
     </section>
   )
 }

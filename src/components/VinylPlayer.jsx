@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useDrag, useDragLayer, useDrop } from 'react-dnd'
 import { getEmptyImage } from 'react-dnd-html5-backend'
-import happinessBg from '../assets/BG/HappinessBG.jpg'
+import seeYouAgainBg from '../assets/BG/SeeYouAgain.jpg'
 import nobodyKnowsBg from '../assets/BG/russ.jpg'
 import writeThisDownBg from '../assets/BG/WritethisDownBG.jpg'
-import happinessSrc from '../assets/songs/Happiness.mp3'
+import seeYouAgainSrc from '../assets/songs/SEE YOU AGAIN featuring Kali Uchis.mp3'
 import nobodyKnowsSrc from '../assets/songs/Russ - Nobody Knows (Official Audio).mp3'
 import writeThisDownSrc from '../assets/songs/write_this_down.mp3'
 import useVinylPlayer from '../hooks/useVinylPlayer'
@@ -17,10 +17,10 @@ const VINYL_ITEM = 'vinyl-record'
 const RECORDS = [
   {
     id: 'happiness',
-    title: 'Happiness',
-    artist: 'Rex Orange County',
-    src: happinessSrc,
-    sleeveImage: happinessBg,
+    title: 'See You Again',
+    artist: 'Tyler, The Creator feat. Kali Uchis',
+    src: seeYouAgainSrc,
+    sleeveImage: seeYouAgainBg,
     labelColor: '#F09A54',
     labelDark: '#D76B3A',
     accent: '#f2b574',
@@ -152,10 +152,10 @@ function SleeveRecord({ record, isLoaded, isPeeked }) {
     <motion.div
       className="music-sleeve__record-wrap"
       animate={{
-        x: isLoaded ? '14%' : isPeeked ? '64%' : '24%',
-        rotate: isLoaded ? -8 : isPeeked ? 5 : 1,
-        scale: isDragging ? 1.04 : 1,
-        opacity: isLoaded ? 0.16 : 1,
+        x: isLoaded ? '8%' : isPeeked ? '72%' : '12%',
+        rotate: isLoaded ? -6 : isPeeked ? 8 : 0,
+        scale: isDragging ? 1.04 : isPeeked ? 1.02 : 1,
+        opacity: isLoaded ? 0.12 : 1,
       }}
       transition={{ type: 'spring', stiffness: 240, damping: 22 }}
     >

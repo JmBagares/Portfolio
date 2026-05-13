@@ -2,6 +2,14 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import StreetArtLayer from './StreetArtLayer'
 
+const SOCIAL_LINKS = [
+  { label: 'Facebook', href: 'https://www.facebook.com/jm.bagares.14/', external: true },
+  { label: 'GitHub', href: 'https://github.com/JmBagares', external: true },
+  { label: 'Instagram', href: 'https://www.instagram.com/ziim_69/', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jan-manuel-bagares-977760337/', external: true },
+  { label: 'Gmail', href: 'mailto:jmbagares52@gmail.com', external: false },
+]
+
 export default function Contact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
@@ -59,7 +67,7 @@ export default function Contact() {
         >
           <motion.a
             ref={btnRef}
-            href="mailto:hello@portfolio.dev"
+            href="mailto:jmbagares52@gmail.com"
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsExpanded(true)}
             onMouseLeave={handleMouseLeave}
@@ -91,19 +99,27 @@ export default function Contact() {
 
         {/* Social links */}
         <motion.div
-          className="mt-20 flex justify-center gap-8"
+          className="mt-20 flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          {['GitHub', 'LinkedIn', 'Twitter', 'Dribbble'].map((link) => (
+          {SOCIAL_LINKS.map((link) => (
             <motion.a
-              key={link}
-              href="#"
-              className="theme-link-muted text-sm font-medium tracking-wide no-underline"
-              whileHover={{ y: -2 }}
+              key={link.label}
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              className="theme-link-muted inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-medium tracking-wide no-underline"
+              whileHover={{ y: -3 }}
+              style={{
+                borderColor: 'color-mix(in srgb, var(--t-accent) 18%, transparent)',
+                background: 'color-mix(in srgb, var(--card-bg) 76%, transparent)',
+                boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+              }}
             >
-              {link}
+              <span>{link.label}</span>
+              <span aria-hidden="true">/</span>
             </motion.a>
           ))}
         </motion.div>
