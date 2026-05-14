@@ -105,6 +105,26 @@ Output directory:
 dist
 ```
 
+## Analytics
+
+Google Analytics 4 is free for standard usage. This project supports GA4 through the `VITE_GA_MEASUREMENT_ID` environment variable.
+
+To enable it locally, create a `.env.local` file in the project root with:
+
+```text
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+To enable it on Vercel:
+
+1. Open your project in Vercel.
+2. Go to Settings > Environment Variables.
+3. Add `VITE_GA_MEASUREMENT_ID`.
+4. Paste your GA4 Measurement ID, for example `G-XXXXXXXXXX`.
+5. Redeploy the project.
+
+If the environment variable is missing, analytics stays disabled and the site still works normally.
+
 ## Author
 
 Jan Manuel Bagares
