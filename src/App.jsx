@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutMe from './components/AboutMe'
@@ -31,6 +32,7 @@ export default function App() {
         <Education />
         <Contact />
       </main>
+      <Analytics />
     </div>
   )
 }
