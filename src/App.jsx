@@ -9,11 +9,13 @@ import Skills from './components/Skills'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
-import { initializeAnalytics } from './utils/analytics'
+import { initializeAnalytics, initScrollDepthTracking } from './utils/analytics'
 
 export default function App() {
   useEffect(() => {
     initializeAnalytics()
+    const cleanupScrollTracking = initScrollDepthTracking()
+    return cleanupScrollTracking
   }, [])
 
   return (
