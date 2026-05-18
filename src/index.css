@@ -320,6 +320,137 @@ h4 {
   }
 }
 
+/* ─── Hero Stat Row ─────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.hero-stat__number {
+  color: var(--t-accent, var(--color-teal));
+  font-family: var(--t-heading-font, var(--font-serif));
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  transition: color 0.7s ease;
+}
+
+.hero-stat__label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  transition: color 0.7s ease;
+}
+
+.hero-stat__divider {
+  width: 1px;
+  height: 2rem;
+  background: color-mix(in srgb, var(--text-muted) 24%, transparent);
+  flex-shrink: 0;
+  transition: background 0.7s ease;
+}
+
+@media (max-width: 767px) {
+  .hero-stats {
+    gap: 1rem;
+  }
+
+  .hero-stat__number {
+    font-size: 1.25rem;
+  }
+
+  .hero-stat__label {
+    font-size: 0.65rem;
+  }
+
+  .hero-stat__divider {
+    height: 1.6rem;
+  }
+}
+
+/* ─── Hero Scroll Indicator ─────────────────────────────── */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: clamp(1.5rem, 3vh, 2.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  z-index: 20;
+  animation: hero-scroll-bounce 2.2s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.hero-scroll-indicator:hover {
+  opacity: 0.7;
+}
+
+.hero-scroll-indicator__text {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: color 0.7s ease;
+}
+
+.hero-scroll-indicator__arrow {
+  color: var(--t-accent, var(--color-teal));
+  transition: color 0.7s ease;
+}
+
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+@media (max-width: 767px) {
+  .hero-scroll-indicator {
+    bottom: 1.25rem;
+  }
+
+  .hero-scroll-indicator__text {
+    font-size: 0.62rem;
+  }
+}
+
+/* ─── Navbar Scroll Progress Bar ────────────────────────── */
+.nav-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--t-accent, var(--color-teal));
+  opacity: 0.7;
+  will-change: transform;
+}
+
+/* ─── Active Nav Link ───────────────────────────────────── */
+.nav-link--active {
+  color: var(--t-accent, var(--color-teal)) !important;
+}
+
+.nav-link--active .nav-link-underline {
+  width: 100%;
+}
+
 .hero-scene,
 .hero-scene__effect {
   position: absolute;

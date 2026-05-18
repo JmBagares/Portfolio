@@ -6,15 +6,21 @@ import petSosPreviewOne from '../assets/Projects/PetSOS/1.jpg'
 import petSosPreviewTwo from '../assets/Projects/PetSOS/2.jpg'
 import petSosPreviewThree from '../assets/Projects/PetSOS/3.jpg'
 import petSosPreviewFour from '../assets/Projects/PetSOS/4.jpg'
-import enrollmentPreview from '../assets/Projects/enrollment.png'
-import enrollmentPreviewTwo from '../assets/Projects/enrollment2.png'
-import enrollmentPreviewThree from '../assets/Projects/enrollment3.png'
-import enrollmentPreviewFour from '../assets/Projects/enrollment4.png'
-import gamePreviewOne from '../assets/Projects/game1.png'
-import gamePreviewTwo from '../assets/Projects/game2.png'
-import magnavalPreview from '../assets/Projects/magnaval.png'
-import warduzPreview from '../assets/Projects/warduz.png'
-import webItPreview from '../assets/Projects/WebIt/image1.png'
+import enrollmentPreview from '../assets/Projects/webp/enrollment.webp'
+import enrollmentPreviewTwo from '../assets/Projects/webp/enrollment2.webp'
+import enrollmentPreviewThree from '../assets/Projects/webp/enrollment3.webp'
+import enrollmentPreviewFour from '../assets/Projects/webp/enrollment4.webp'
+import gamePreviewOne from '../assets/Projects/webp/game1.webp'
+import gamePreviewTwo from '../assets/Projects/webp/game2.webp'
+import magnavalPreview from '../assets/Projects/webp/magnaval.webp'
+import warduzPreview from '../assets/Projects/webp/warduz.webp'
+import webItPreview from '../assets/Projects/webp/image1.webp'
+import landingPageOne from '../assets/Projects/landingPage/webp/PetSOS1.webp'
+import landingPageTwo from '../assets/Projects/landingPage/webp/PetSOS2.webp'
+import landingPageThree from '../assets/Projects/landingPage/webp/PetSOS3.webp'
+import landingPageFour from '../assets/Projects/landingPage/webp/PetSOS4.webp'
+import landingPageFive from '../assets/Projects/landingPage/webp/PetSOS5.webp'
+import landingPageSix from '../assets/Projects/landingPage/webp/PetSOS6.webp'
 
 const projects = [
   {
@@ -113,6 +119,35 @@ const projects = [
     ],
     links: [
       { label: 'Visit Website', href: 'https://webit-fj6kgkjsx-jmbagares-projects.vercel.app/' },
+    ],
+  },
+  {
+    id: 6,
+    title: 'PetSOS Landing Page',
+    category: 'Landing Page',
+    description: 'A sleek, modern promotional website for the PetSOS animal rescue mobile app. It features a highly interactive GSAP-powered DotGrid background, fluid Framer Motion entry animations, glassmorphism UI elements, and a responsive layout built with React 19 and Tailwind CSS.',
+    tags: ['React 19', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'TypeScript'],
+    status: 'Live Website',
+    color: '#F59E0B',
+    image: landingPageOne,
+    previews: [
+      { src: landingPageOne, alt: 'PetSOS landing page preview 1' },
+      { src: landingPageTwo, alt: 'PetSOS landing page preview 2' },
+      { src: landingPageThree, alt: 'PetSOS landing page preview 3' },
+      { src: landingPageFour, alt: 'PetSOS landing page preview 4' },
+      { src: landingPageFive, alt: 'PetSOS landing page preview 5' },
+      { src: landingPageSix, alt: 'PetSOS landing page preview 6' },
+    ],
+    images: [
+      { src: landingPageOne, alt: 'PetSOS landing page preview 1' },
+      { src: landingPageTwo, alt: 'PetSOS landing page preview 2' },
+      { src: landingPageThree, alt: 'PetSOS landing page preview 3' },
+      { src: landingPageFour, alt: 'PetSOS landing page preview 4' },
+      { src: landingPageFive, alt: 'PetSOS landing page preview 5' },
+      { src: landingPageSix, alt: 'PetSOS landing page preview 6' },
+    ],
+    links: [
+      { label: 'Visit Website', href: 'https://pet-sos.vercel.app/' },
     ],
   },
 ]
@@ -240,6 +275,8 @@ function ProjectCard({ project, index, onOpenProject }) {
                       key={activePhoneSlide.src}
                       src={activePhoneSlide.src}
                       alt={activePhoneSlide.alt}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full bg-white object-contain object-top"
                       initial={{ opacity: 0, x: 18 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -325,6 +362,8 @@ function ProjectCard({ project, index, onOpenProject }) {
                   key={image.src}
                   src={image.src}
                   alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full rounded-[18px] object-cover"
                   style={{ y: imageY }}
                   animate={{ scale: isCardHovered ? 1.04 : 1 }}
@@ -336,6 +375,8 @@ function ProjectCard({ project, index, onOpenProject }) {
             <motion.img
               src={previewImages[0].src}
               alt={previewImages[0].alt}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
               style={{ y: imageY }}
               animate={{ scale: isCardHovered ? 1.05 : 1 }}
@@ -562,6 +603,8 @@ function ProjectModal({ project, onClose }) {
                     key={activePreview.src}
                     src={activePreview.src}
                     alt={activePreview.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="selected-works-modal__preview-image"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}

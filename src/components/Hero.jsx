@@ -134,6 +134,23 @@ export default function Hero() {
             Building responsive apps, clean UI, and reliable tech solutions with confidence and purpose.
           </motion.p>
 
+          <motion.div className="hero-stats" variants={heroItemVariants}>
+            <span className="hero-stat">
+              <span className="hero-stat__number">6</span>
+              <span className="hero-stat__label">Projects</span>
+            </span>
+            <span className="hero-stat__divider" aria-hidden="true" />
+            <span className="hero-stat">
+              <span className="hero-stat__number">5+</span>
+              <span className="hero-stat__label">Technologies</span>
+            </span>
+            <span className="hero-stat__divider" aria-hidden="true" />
+            <span className="hero-stat">
+              <span className="hero-stat__number">1</span>
+              <span className="hero-stat__label">Thesis</span>
+            </span>
+          </motion.div>
+
           <motion.div className="hero-cta-wrap" variants={heroItemVariants}>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <MagneticButton onClick={scrollToWorks}>
@@ -151,6 +168,37 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="hero-scroll-indicator"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
+        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll down to explore more content"
+        onKeyDown={(e) => e.key === 'Enter' && document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+      >
+        <span className="hero-scroll-indicator__text">Scroll to explore</span>
+        <svg
+          className="hero-scroll-indicator__arrow"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 5v14M5 12l7 7 7-7"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </motion.div>
     </section>
   )
 }
