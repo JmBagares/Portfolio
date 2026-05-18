@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import StreetArtLayer from "./StreetArtLayer";
-import aboutPortraitPrimary from "../assets/picture/1.png";
-import aboutPortraitHover from "../assets/picture/2.png";
+import aboutPortraitPrimary from "../assets/picture/webp/1.webp";
+import aboutPortraitHover from "../assets/picture/webp/2.webp";
 
 const FEATURED_PROJECT = {
   title: "PetSOS",
@@ -68,12 +68,16 @@ export default function AboutMe() {
                 <img
                   src={aboutPortraitPrimary}
                   alt="Jan Manuel Bagares portrait"
+                  loading="lazy"
+                  decoding="async"
                   className="about-photo__image"
                 />
                 <img
                   src={aboutPortraitHover}
                   alt=""
                   aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
                   className="about-photo__image about-photo__image--hover"
                 />
                 <div className="about-photo__shade" aria-hidden="true" />
