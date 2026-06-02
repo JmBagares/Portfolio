@@ -2,7 +2,9 @@ import { lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Particles from './Particles'
 import MagneticButton from './MagneticButton'
+import ErrorBoundary from './ErrorBoundary'
 import { useTheme } from '../theme/ThemeContext'
+import { trackEvent } from '../utils/analytics'
 import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
 
 const GridScan = lazy(() => import('./GridScan'))
@@ -108,7 +110,9 @@ export default function Hero() {
       }`}
     >
       <div className="hero-section__backdrop absolute inset-0 z-0">
-        <HeroBackground theme={theme} themeId={themeId} />
+        <ErrorBoundary>
+          <HeroBackground theme={theme} themeId={themeId} />
+        </ErrorBoundary>
       </div>
 
       <div
@@ -161,6 +165,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="View Jan Manuel Bagares CV in a new tab"
+                onClick={() => trackEvent('cv_view', { location: 'hero' })}
               >
                 View CV
               </MagneticButton>

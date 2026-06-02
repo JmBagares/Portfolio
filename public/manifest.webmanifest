@@ -1,0 +1,24 @@
+{
+  "name": "Jan Manuel Bagares — Portfolio",
+  "short_name": "JM Bagares",
+  "description": "Portfolio of Jan Manuel Bagares, a React Native and Front-End Developer.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0e1116",
+  "theme_color": "#56b6c6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/Vinyl.png",
+      "sizes": "1225x1225",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
