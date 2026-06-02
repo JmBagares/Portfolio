@@ -144,6 +144,15 @@ h4 {
   color: var(--label-text);
 }
 
+.contact-field::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 70%, transparent);
+}
+
+.contact-field:focus-visible {
+  border-color: color-mix(in srgb, var(--t-accent) 55%, transparent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 20%, transparent);
+}
+
 .magnetic-btn {
   border: 1px solid var(--button-border);
   box-shadow: var(--t-btn-shadow);

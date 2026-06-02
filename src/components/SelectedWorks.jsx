@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { useTheme } from '../theme/ThemeContext'
+import { trackEvent } from '../utils/analytics'
 import StreetArtLayer from './StreetArtLayer'
 import petSosPreviewOne from '../assets/Projects/PetSOS/1.jpg'
 import petSosPreviewTwo from '../assets/Projects/PetSOS/2.jpg'
@@ -33,6 +34,7 @@ const projects = [
     id: 1,
     title: 'PetSOS',
     category: 'Mobile App',
+    group: 'Mobile',
     description: 'Developed a community-based animal rescue mobile app focused on real-time incident reporting, geolocation tracking, volunteer coordination, and clear rescue flows. The product also integrated backend services and AI-assisted response support to help turn reports into faster, more organized action.',
     tags: ['React Native', 'Geolocation', 'API Integration', 'UI/UX', 'AI-Assisted Features'],
     status: 'Thesis Project',
@@ -58,6 +60,7 @@ const projects = [
     id: 7,
     title: 'Lunan',
     category: 'Mobile App',
+    group: 'Mobile',
     description: 'A cross-platform React Native (Expo) travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map. Features offline local storage, reverse geocoding, photo galleries, categories & ratings, light/dark theming, and JSON backups.',
     tags: ['React Native', 'Expo SDK 56', 'React Navigation', 'Leaflet / OpenStreetMap', 'AsyncStorage', 'expo-location', 'expo-image-picker'],
     status: 'Mobile App',
@@ -87,6 +90,7 @@ const projects = [
     id: 2,
     title: 'WordPress Business & Pet Shop Sites',
     category: 'WordPress / Elementor',
+    group: 'Web',
     description: 'Developed and deployed two responsive WordPress websites using Elementor for Magnaval Services and Warduz Pet Shop, customizing themes, structuring service and product content, and refining the mobile experience for clear browsing on every screen size.',
     tags: ['WordPress', 'Elementor', 'Responsive Design', 'Theme Customization'],
     status: 'Live Websites',
@@ -108,6 +112,7 @@ const projects = [
     id: 3,
     title: 'Enrollment System Front End',
     category: 'Team Product UI',
+    group: 'Web',
     description: 'Designed and developed the responsive front end of an enrollment system with React.js, CSS, and Bootstrap, using Axios-powered API requests and real-time form validation to keep the student flow smooth while coordinating closely with the team on backend integration and modern UI polish.',
     tags: ['React.js', 'CSS', 'Bootstrap', 'Axios', 'Form Validation'],
     status: 'Frontend Build',
@@ -127,6 +132,7 @@ const projects = [
     id: 4,
     title: "Adventurer's Quest",
     category: 'Game Development',
+    group: 'Game',
     description: 'Built a 2D adventure game in Godot, designing playable encounters, scene flow, and interaction systems while iterating on level structure and the overall gameplay loop. The project highlights hands-on work with game logic, environment setup, and shaping a more complete player experience from multiple connected scenes.',
     tags: ['Godot', '2D Game Development', 'Scene Design', 'Gameplay Logic'],
     status: 'Game Project',
@@ -147,6 +153,7 @@ const projects = [
     id: 5,
     title: 'WebIT',
     category: 'Frontend Development',
+    group: 'Web',
     description: 'Built a fictional company website for a course project, focusing on polished frontend layout, clean section structure, responsive presentation, and a more confident visual flow. The project highlights my ability to translate a subject requirement into a complete landing-page style experience.',
     tags: ['React.js', 'Frontend UI', 'Responsive Design', 'Component Layout'],
     status: 'Subject Project',
@@ -163,6 +170,7 @@ const projects = [
     id: 6,
     title: 'PetSOS Landing Page',
     category: 'Landing Page',
+    group: 'Web',
     description: 'A sleek, modern promotional website for the PetSOS animal rescue mobile app. It features a highly interactive GSAP-powered DotGrid background, fluid Framer Motion entry animations, glassmorphism UI elements, and a responsive layout built with React 19 and Tailwind CSS.',
     tags: ['React 19', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'TypeScript'],
     status: 'Live Website',
@@ -248,7 +256,12 @@ function ProjectCard({ project, index, onOpenProject }) {
       return
     }
 
-    setIsPhonePreviewOpen((currentState) => !currentState)
+    setIsPhonePreviewOpen((currentState) => {
+      if (!currentState) {
+        trackEvent('project_preview_open', { project: project.title })
+      }
+      return !currentState
+    })
   }
 
   const changePhoneSlide = (direction) => {
@@ -723,12 +736,29 @@ function ProjectModal({ project, onClose }) {
   )
 }
 
+const PROJECT_FILTERS = ['All', ...Array.from(new Set(projects.map((project) => project.group).filter(Boolean)))]
+
 export default function SelectedWorks() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const [activeProject, setActiveProject] = useState(null)
   const [showAllProjects, setShowAllProjects] = useState(false)
-  const visibleProjects = showAllProjects ? projects : projects.slice(0, 4)
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  const filteredProjects = activeFilter === 'All'
+    ? projects
+    : projects.filter((project) => project.group === activeFilter)
+  const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 4)
+
+  const handleFilterChange = (filter) => {
+    setActiveFilter(filter)
+    setShowAllProjects(false)
+  }
+
+  const handleOpenProject = (project) => {
+    trackEvent('project_view', { project: project.title })
+    setActiveProject(project)
+  }
 
   useEffect(() => {
     if (!activeProject) {
@@ -773,14 +803,46 @@ export default function SelectedWorks() {
             Selected Works
           </h2>
         </motion.div>
+
+        <motion.div
+          className="mb-10 flex flex-wrap justify-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          role="tablist"
+          aria-label="Filter projects by category"
+        >
+          {PROJECT_FILTERS.map((filter) => {
+            const isActive = activeFilter === filter
+            return (
+              <button
+                key={filter}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => handleFilterChange(filter)}
+                className="rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: isActive ? 'var(--t-btn-bg)' : 'color-mix(in srgb, var(--card-bg) 76%, transparent)',
+                  color: isActive ? 'var(--t-btn-text)' : 'var(--text-muted)',
+                  border: `1px solid ${isActive ? 'var(--button-border)' : 'color-mix(in srgb, var(--t-accent) 18%, transparent)'}`,
+                  boxShadow: isActive ? 'var(--t-btn-shadow)' : 'none',
+                }}
+              >
+                {filter}
+              </button>
+            )
+          })}
+        </motion.div>
+
         <div id="selected-works-grid" className="selected-works__grid">
           <AnimatePresence initial={false}>
             {visibleProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} onOpenProject={setActiveProject} />
+              <ProjectCard key={project.id} project={project} index={index} onOpenProject={handleOpenProject} />
             ))}
           </AnimatePresence>
         </div>
-        {projects.length > 4 ? (
+        {filteredProjects.length > 4 ? (
           <motion.div
             className="mt-10 flex justify-center"
             initial={{ opacity: 0, y: 20 }}

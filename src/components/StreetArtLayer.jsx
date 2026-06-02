@@ -54,7 +54,7 @@ export default function StreetArtLayer({ sectionId }) {
                   draggable={false}
                 />
               ) : (
-                <img className="section-media__image" src={poster.src} alt="" draggable={false} />
+                <img className="section-media__image" src={poster.src} alt="" draggable={false} loading="lazy" decoding="async" />
               )}
             </div>
           </motion.div>

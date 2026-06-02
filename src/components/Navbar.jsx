@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
+import { trackEvent } from '../utils/analytics'
+import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
 
 const navLinks = [
   { label: 'About', href: '#about', sectionId: 'about' },
@@ -77,10 +79,18 @@ export default function Navbar() {
             </a>
           ))}
           <a
+            href={cvFile}
+            download="Jan Manuel Bagares CV.pdf"
+            onClick={() => trackEvent('cv_download', { location: 'navbar' })}
+            className="theme-link-muted text-sm font-medium tracking-wide no-underline"
+          >
+            Resume
+          </a>
+          <a
             href="mailto:jmbagares52@gmail.com"
             className="magnetic-btn px-5 py-2 text-sm font-semibold no-underline"
-            style={{ 
-              background: 'var(--t-btn-bg)', 
+            style={{
+              background: 'var(--t-btn-bg)',
               color: 'var(--t-btn-text)',
               borderRadius: 'var(--t-btn-radius)',
               transition: 'background 0.8s ease, color 0.8s ease, border-radius 0.8s ease'
@@ -137,6 +147,18 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={cvFile}
+                download="Jan Manuel Bagares CV.pdf"
+                onClick={() => {
+                  trackEvent('cv_download', { location: 'mobile-menu' })
+                  setMobileOpen(false)
+                }}
+                className="text-lg font-medium no-underline"
+                style={{ color: 'var(--text-primary)' }}
+              >
+                Resume
+              </a>
               <a
                 href="mailto:jmbagares52@gmail.com"
                 onClick={() => setMobileOpen(false)}

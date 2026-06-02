@@ -11,3 +11,13 @@ createRoot(document.getElementById('root')).render(
     </ThemeProvider>
   </StrictMode>,
 )
+
+// Register the service worker for offline support / installability.
+// Production only — keeping it out of dev avoids stale-cache headaches.
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Service worker registration is a progressive enhancement; ignore failures.
+    })
+  })
+}
