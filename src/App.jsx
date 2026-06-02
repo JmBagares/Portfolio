@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
 import ErrorBoundary from './components/ErrorBoundary'
 import InfoGuide from './components/InfoGuide'
+import Preloader from './components/Preloader'
 import { initializeAnalytics, initScrollDepthTracking } from './utils/analytics'
 
 // The turntable pulls in react-dnd + the vinyl player, so it's split out of the
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      <Preloader />
       <CustomCursor />
       <Navbar />
       <InfoGuide />

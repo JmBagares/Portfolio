@@ -2248,6 +2248,86 @@ body.theme-happiness::after {
   50% { transform: scaleY(1); opacity: 1; }
 }
 
+/* ─── Preloader (branded intro screen) ─────────────────────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+  background:
+    radial-gradient(ellipse at 50% 32%, color-mix(in srgb, var(--t-accent) 14%, transparent), transparent 62%),
+    linear-gradient(180deg, var(--t-bg) 0%, var(--t-bg-secondary) 100%);
+}
+
+.preloader__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0 24px;
+}
+
+.preloader__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+}
+
+.preloader__logo {
+  font-family: var(--t-heading-font);
+  font-size: clamp(3rem, 12vw, 4.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t-text);
+}
+
+.preloader__logo span { color: var(--t-accent); }
+
+.preloader__tagline {
+  margin-top: 0.3rem;
+  max-width: 38ch;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--t-text-muted);
+}
+
+.preloader__btn {
+  margin-top: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2.5rem;
+  border: 1px solid var(--button-border, transparent);
+  border-radius: var(--t-btn-radius, 999px);
+  background: var(--t-btn-bg);
+  color: var(--t-btn-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: var(--t-btn-shadow);
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.preloader__btn:hover { transform: translateY(-2px); filter: brightness(1.04); }
+
+.preloader__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--t-accent) 24%, transparent), var(--t-btn-shadow);
+}
+
+.preloader__arrow { transition: transform 0.25s ease; }
+.preloader__btn:hover .preloader__arrow { transform: translateX(4px); }
+
 /* ─── Info Guide (floating "i" button + panel) ─────────────── */
 .info-guide-fab {
   position: fixed;
