@@ -1,5 +1,5 @@
 /**
- * Theme Engine — Configuration
+ * Theme Engine - Configuration
  *
  * Each theme defines:
  *   css        – key/value pairs set as CSS custom properties on #root
@@ -173,7 +173,7 @@ const themes = {
       '--t-player-shell':  'linear-gradient(145deg, #f5d7ad 0%, #efc48f 36%, #e7b17d 100%)',
       '--t-player-shell-border': 'rgba(179,126,76,0.2)',
       '--t-player-shadow': '0 30px 70px rgba(210,156,96,0.18)',
-      /* Now-Playing Indicator — dark warm card so text is always readable */
+      /* Now-Playing Indicator: dark warm card so text is always readable */
       '--now-playing-bg':        'rgba(59,39,22,0.96)',
       '--now-playing-text':      '#FFF6EA',
       '--now-playing-muted':     'rgba(247,235,218,0.80)',
@@ -266,7 +266,7 @@ const themes = {
       '--t-player-shell':  'linear-gradient(145deg, #3b3454 0%, #2a243d 36%, #1e192a 100%)',
       '--t-player-shell-border': 'rgba(240,98,146,0.12)',
       '--t-player-shadow': '0 32px 80px rgba(0,0,0,0.32)',
-      /* Now-Playing Indicator — dark glass with neon accent */
+      /* Now-Playing Indicator: dark glass with neon accent */
       '--now-playing-bg':        'rgba(11,11,22,0.96)',
       '--now-playing-text':      '#FFF5FB',
       '--now-playing-muted':     'rgba(245,226,236,0.80)',
@@ -359,7 +359,7 @@ const themes = {
       '--t-player-shell':  'linear-gradient(145deg, #2c2c2c 0%, #171717 42%, #090909 100%)',
       '--t-player-shell-border': 'rgba(212,175,55,0.18)',
       '--t-player-shadow': '0 32px 80px rgba(0,0,0,0.45)',
-      /* Now-Playing Indicator — bold stark card on black */
+      /* Now-Playing Indicator: bold stark card on black */
       '--now-playing-bg':        'rgba(8,8,8,0.97)',
       '--now-playing-text':      '#FAF6EE',
       '--now-playing-muted':     'rgba(246,241,231,0.72)',

@@ -78,7 +78,7 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="glass-card rounded-[24px] p-6 md:p-8 text-left flex flex-col gap-5" noValidate>
-              {/* Honeypot — hidden from real users; bots that fill it get filtered by Formspree */}
+              {/* Honeypot: hidden from real users; bots that fill it get filtered by Formspree */}
               <input
                 type="text"
                 name="_gotcha"
@@ -208,7 +208,7 @@ export default function Contact() {
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t" style={{ borderColor: 'color-mix(in srgb, var(--t-text) 10%, transparent)' }}>
           <p className="text-sm font-light" style={{ color: 'var(--text-muted)' }}>
-            © {new Date().getFullYear()} — Designed & Built with precision
+            © {new Date().getFullYear()} · Designed & Built with precision
             </p>
         </div>
       </div>

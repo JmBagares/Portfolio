@@ -67,7 +67,7 @@ export function trackEvent(eventName, params = {}) {
 /**
  * Track scroll depth milestones at 25%, 50%, 75%, and 100%.
  * Each milestone fires only once per page load.
- * Call this once on mount — it self-manages the listener cleanup.
+ * Call this once on mount; it self-manages the listener cleanup.
  */
 export function initScrollDepthTracking() {
   const currentWindow = getWindow()
@@ -99,7 +99,7 @@ export function initScrollDepthTracking() {
       }
     }
 
-    // All milestones reached — stop listening
+    // All milestones reached, stop listening
     if (reached.size === milestones.length) {
       currentWindow.removeEventListener('scroll', handleScroll)
     }

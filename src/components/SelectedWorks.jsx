@@ -52,7 +52,8 @@ const projects = [
       { src: petSosPreviewThree, alt: 'PetSOS mobile screen three' },
       { src: petSosPreviewFour, alt: 'PetSOS mobile screen four' },
     ],
-     links: [
+    caseStudyUrl: '/case-study-petsos.html',
+    links: [
       { label: 'View on GitHub', href: 'https://github.com/JmBagares/petsos-prototype' },
     ],
   },
@@ -553,6 +554,22 @@ function ProjectCard({ project, index, onOpenProject }) {
               >
                 {isPhonePreviewOpen ? 'Hide App Preview' : 'Open App Preview'}
               </button>
+            ) : null}
+            {project.caseStudyUrl ? (
+              <a
+                href={project.caseStudyUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="w-full rounded-full px-4 py-3 text-center text-sm font-semibold uppercase tracking-[0.18em] no-underline transition-transform duration-300 hover:-translate-y-0.5 sm:w-fit"
+                style={{
+                  background: projectTone,
+                  color: 'var(--t-btn-text, #0e1116)',
+                  border: `1px solid ${projectTone}`,
+                }}
+                onClick={() => trackEvent('case_study_open', { project: project.title })}
+              >
+                Read Case Study
+              </a>
             ) : null}
             {project.links?.length ? (
               <div className="selected-works__links flex flex-wrap gap-3">

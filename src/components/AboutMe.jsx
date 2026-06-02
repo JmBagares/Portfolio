@@ -171,7 +171,7 @@ export default function AboutMe() {
                   >
                     {FEATURED_PROJECT.title}
                   </strong>
-                  —an App-Based AI-Assisted Geolocation and Automated Response
+                  , an App-Based AI-Assisted Geolocation and Automated Response
                   System for Community-Based Animal Rescue. I served as the{" "}
                   <strong
                     className="font-medium"

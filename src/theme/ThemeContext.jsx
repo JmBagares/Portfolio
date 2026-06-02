@@ -20,7 +20,7 @@ export function ThemeProvider({ children }) {
   const [themeId, setThemeId] = useState(THEME_DEFAULT)
   const prevBodyClass = useRef('')
 
-  /* Derive the resolved theme object — always a valid object */
+  /* Derive the resolved theme object, always a valid object */
   const theme = useMemo(() => themes[themeId] || themes[THEME_DEFAULT], [themeId])
 
   /**

@@ -9,6 +9,7 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
 import ErrorBoundary from './components/ErrorBoundary'
+import InfoGuide from './components/InfoGuide'
 import { initializeAnalytics, initScrollDepthTracking } from './utils/analytics'
 
 // The turntable pulls in react-dnd + the vinyl player, so it's split out of the
@@ -26,6 +27,7 @@ export default function App() {
     <div className="min-h-screen">
       <CustomCursor />
       <Navbar />
+      <InfoGuide />
 
       <main className="portfolio-shell relative">
         <Hero />

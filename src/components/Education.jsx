@@ -5,7 +5,7 @@ import StreetArtLayer from './StreetArtLayer'
 const education = [
   {
     id: 1,
-    school: 'Cavite State University — Bacoor Campus',
+    school: 'Cavite State University - Bacoor Campus',
     degree: 'Bachelor of Science in Computer Science',
     period: 'Expected Graduation: 2026',
     current: true,
@@ -13,7 +13,7 @@ const education = [
   },
   {
     id: 2,
-    school: 'University of Perpetual Help System DALTA — Las Piñas Campus',
+    school: 'University of Perpetual Help System DALTA - Las Piñas Campus',
     degree: 'Senior High School (ICT Strand)',
     period: 'Graduated: 2020',
     current: false,
