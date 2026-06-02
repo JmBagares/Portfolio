@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import wallBackground from '../assets/streets/bg wall.png'
 import { useTheme } from '../theme/ThemeContext'
 import StreetArtLayer from './StreetArtLayer'
 
@@ -110,7 +109,6 @@ export default function Skills() {
         id="skills"
         className="skills-wall skills-wall--hiphop py-24 md:py-36"
         ref={sectionRef}
-        style={{ '--skills-wall-image': `url(${wallBackground})` }}
       >
         <StreetArtLayer sectionId="skills" />
 

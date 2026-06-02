@@ -21,6 +21,12 @@ import landingPageThree from '../assets/Projects/landingPage/webp/PetSOS3.webp'
 import landingPageFour from '../assets/Projects/landingPage/webp/PetSOS4.webp'
 import landingPageFive from '../assets/Projects/landingPage/webp/PetSOS5.webp'
 import landingPageSix from '../assets/Projects/landingPage/webp/PetSOS6.webp'
+import lunanPreviewOne from '../assets/lunan/1.jpg'
+import lunanPreviewTwo from '../assets/lunan/2.jpg'
+import lunanPreviewThree from '../assets/lunan/3.jpg'
+import lunanPreviewFour from '../assets/lunan/4.jpg'
+import lunanPreviewFive from '../assets/lunan/5.jpg'
+import lunanPreviewSix from '../assets/lunan/6.jpg'
 
 const projects = [
   {
@@ -43,6 +49,38 @@ const projects = [
       { src: petSosPreviewTwo, alt: 'PetSOS mobile screen two' },
       { src: petSosPreviewThree, alt: 'PetSOS mobile screen three' },
       { src: petSosPreviewFour, alt: 'PetSOS mobile screen four' },
+    ],
+     links: [
+      { label: 'View on GitHub', href: 'https://github.com/JmBagares/petsos-prototype' },
+    ],
+  },
+  {
+    id: 7,
+    title: 'Lunan',
+    category: 'Mobile App',
+    description: 'A cross-platform React Native (Expo) travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map. Features offline local storage, reverse geocoding, photo galleries, categories & ratings, light/dark theming, and JSON backups.',
+    tags: ['React Native', 'Expo SDK 56', 'React Navigation', 'Leaflet / OpenStreetMap', 'AsyncStorage', 'expo-location', 'expo-image-picker'],
+    status: 'Mobile App',
+    color: '#8ACBD0',
+    image: lunanPreviewOne,
+    previews: [
+      { src: lunanPreviewOne, alt: 'Lunan mobile screen one' },
+      { src: lunanPreviewTwo, alt: 'Lunan mobile screen two' },
+      { src: lunanPreviewThree, alt: 'Lunan mobile screen three' },
+      { src: lunanPreviewFour, alt: 'Lunan mobile screen four' },
+      { src: lunanPreviewFive, alt: 'Lunan mobile screen five' },
+      { src: lunanPreviewSix, alt: 'Lunan mobile screen six' },
+    ],
+    phoneSlides: [
+      { src: lunanPreviewOne, alt: 'Lunan mobile screen one' },
+      { src: lunanPreviewTwo, alt: 'Lunan mobile screen two' },
+      { src: lunanPreviewThree, alt: 'Lunan mobile screen three' },
+      { src: lunanPreviewFour, alt: 'Lunan mobile screen four' },
+      { src: lunanPreviewFive, alt: 'Lunan mobile screen five' },
+      { src: lunanPreviewSix, alt: 'Lunan mobile screen six' },
+    ],
+    links: [
+      { label: 'View on GitHub', href: 'https://github.com/JmBagares/Lunan' },
     ],
   },
   {
@@ -189,7 +227,9 @@ function ProjectCard({ project, index, onOpenProject }) {
     : project.links?.length
       ? 'View Project'
       : 'View Details'
-  const cardDescription = getCardDescription(project.description)
+  const cardDescription = hasPhonePreview && isPhonePreviewOpen
+    ? project.description
+    : getCardDescription(project.description)
 
   useEffect(() => {
     if (!hasPhonePreview || !isPhonePreviewOpen || project.phoneSlides.length < 2) {
@@ -292,7 +332,7 @@ function ProjectCard({ project, index, onOpenProject }) {
               <div className="flex w-full max-w-76 flex-col items-center gap-3" onClick={(event) => event.stopPropagation()}>
                 <div className="flex w-full items-center justify-between gap-3">
                   <p className="text-left text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: 'var(--label-text)' }}>
-                    PetSOS App Screens
+                    {project.title} App Screens
                   </p>
                   <button
                     type="button"
@@ -341,7 +381,7 @@ function ProjectCard({ project, index, onOpenProject }) {
                     <button
                       key={slide.src}
                       type="button"
-                      aria-label={`Go to PetSOS screen ${slideIndex + 1}`}
+                      aria-label={`Go to ${project.title} screen ${slideIndex + 1}`}
                       className="h-2.5 w-2.5 rounded-full transition-transform duration-300"
                       style={{
                         backgroundColor: slideIndex === activePhoneSlideIndex

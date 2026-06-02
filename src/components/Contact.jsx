@@ -127,8 +127,8 @@ export default function Contact() {
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t" style={{ borderColor: 'color-mix(in srgb, var(--t-text) 10%, transparent)' }}>
           <p className="text-sm font-light" style={{ color: 'var(--text-muted)' }}>
-            © 2026 — Designed & Built with precision
-          </p>
+            © {new Date().getFullYear()} — Designed & Built with precision
+            </p>
         </div>
       </div>
     </footer>
