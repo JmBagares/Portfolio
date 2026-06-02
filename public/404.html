@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Page not found — Jan Manuel Bagares</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(86, 182, 198, 0.18), transparent 60%),
+        #0e1116;
+      color: #e7eef0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      overflow: hidden;
+    }
+    .wrap { max-width: 540px; }
+    .code {
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      background: linear-gradient(180deg, #8acbd0, #56b6c6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1 {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    p {
+      margin-top: 14px;
+      color: #9fb0b5;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: #56b6c6;
+      color: #0e1116;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 14px 34px rgba(86, 182, 198, 0.32);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(86, 182, 198, 0.42); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <h1>This track isn't on the record.</h1>
+    <p>The page you're looking for doesn't exist or may have been moved. Let's get you back to the music.</p>
+    <a class="btn" href="/">
+      <span>Back to Home</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</body>
+</html>
