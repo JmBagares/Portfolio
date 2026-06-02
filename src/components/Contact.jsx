@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { useForm, ValidationError } from '@formspree/react'
 import StreetArtLayer from './StreetArtLayer'
+import { trackEvent } from '../utils/analytics'
 
 const SOCIAL_LINKS = [
   { label: 'Facebook', href: 'https://www.facebook.com/jm.bagares.14/', external: true },
@@ -10,25 +12,22 @@ const SOCIAL_LINKS = [
   { label: 'Gmail', href: 'mailto:jmbagares52@gmail.com', external: false },
 ]
 
+const inputStyle = {
+  background: 'color-mix(in srgb, var(--card-bg) 76%, transparent)',
+  border: '1px solid color-mix(in srgb, var(--t-accent) 22%, transparent)',
+  color: 'var(--text-primary)',
+}
+
 export default function Contact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const btnRef = useRef(null)
+  const [state, handleSubmit] = useForm('xqejrler')
 
-  const handleMouseMove = (e) => {
-    if (!btnRef.current) return
-    const rect = btnRef.current.getBoundingClientRect()
-    const cx = rect.left + rect.width / 2
-    const cy = rect.top + rect.height / 2
-    setOffset({ x: (e.clientX - cx) * 0.2, y: (e.clientY - cy) * 0.2 })
-  }
-
-  const handleMouseLeave = () => {
-    setOffset({ x: 0, y: 0 })
-    setIsExpanded(false)
-  }
+  useEffect(() => {
+    if (state.succeeded) {
+      trackEvent('contact_submit', { form: 'formspree' })
+    }
+  }, [state.succeeded])
 
   return (
     <footer id="contact" className="py-24 md:py-36 relative overflow-hidden" ref={sectionRef}>
@@ -59,47 +58,129 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* Expanding "Let's Talk" button */}
+        {/* Contact form */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          className="max-w-2xl mx-auto"
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
         >
-          <motion.a
-            ref={btnRef}
-            href="mailto:jmbagares52@gmail.com"
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsExpanded(true)}
-            onMouseLeave={handleMouseLeave}
-            animate={{
-              x: offset.x, y: offset.y,
-              paddingLeft: isExpanded ? 64 : 48,
-              paddingRight: isExpanded ? 64 : 48,
-              paddingTop: isExpanded ? 28 : 20,
-              paddingBottom: isExpanded ? 28 : 20,
-            }}
-            transition={{ type: 'spring', stiffness: 300, damping: 15, mass: 0.3 }}
-            className="magnetic-btn inline-flex items-center gap-3 text-xl md:text-2xl font-semibold no-underline"
-            style={{ 
-              background: 'var(--t-btn-bg)',
-              color: 'var(--t-btn-text)',
-              borderRadius: 'var(--t-btn-radius)',
-              transition: 'background 0.8s ease, color 0.8s ease, border-radius 0.8s ease'
-            }}
-          >
-            <span>Let's Talk</span>
-            <motion.span
-              animate={{ x: isExpanded ? 6 : 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-            >
-              →
-            </motion.span>
-          </motion.a>
+          {state.succeeded ? (
+            <div className="glass-card rounded-[24px] p-10 md:p-12 text-center">
+              <div className="text-4xl mb-4" aria-hidden="true">✓</div>
+              <h3 className="text-2xl md:text-3xl mb-3 transition-colors duration-700"
+                style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--text-primary)' }}>
+                Thanks for reaching out!
+              </h3>
+              <p className="text-base font-light" style={{ color: 'var(--text-muted)' }}>
+                Your message has been sent. I'll get back to you as soon as I can.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="glass-card rounded-[24px] p-6 md:p-8 text-left flex flex-col gap-5" noValidate>
+              {/* Honeypot — hidden from real users; bots that fill it get filtered by Formspree */}
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: 'none' }}
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="contact-name" className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: 'var(--label-text)' }}>
+                    Name
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    required
+                    autoComplete="name"
+                    placeholder="Your name"
+                    className="contact-field rounded-2xl px-4 py-3 text-sm outline-none transition-colors"
+                    style={inputStyle}
+                  />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-xs text-red-400" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="contact-email" className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: 'var(--label-text)' }}>
+                    Email
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    className="contact-field rounded-2xl px-4 py-3 text-sm outline-none transition-colors"
+                    style={inputStyle}
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-xs text-red-400" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="contact-subject" className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: 'var(--label-text)' }}>
+                  Subject
+                </label>
+                <input
+                  id="contact-subject"
+                  type="text"
+                  name="_subject"
+                  required
+                  placeholder="What's this about?"
+                  className="contact-field rounded-2xl px-4 py-3 text-sm outline-none transition-colors"
+                  style={inputStyle}
+                />
+                <ValidationError prefix="Subject" field="_subject" errors={state.errors} className="text-xs text-red-400" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="contact-message" className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: 'var(--label-text)' }}>
+                  Message
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Tell me about your project or idea..."
+                  className="contact-field rounded-2xl px-4 py-3 text-sm outline-none transition-colors resize-y"
+                  style={inputStyle}
+                />
+                <ValidationError prefix="Message" field="message" errors={state.errors} className="text-xs text-red-400" />
+              </div>
+
+              <ValidationError errors={state.errors} className="text-sm text-red-400" />
+
+              <button
+                type="submit"
+                disabled={state.submitting}
+                className="self-center mt-2 inline-flex items-center gap-3 px-10 py-4 text-base md:text-lg font-semibold no-underline transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                style={{
+                  background: 'var(--t-btn-bg)',
+                  color: 'var(--t-btn-text)',
+                  borderRadius: 'var(--t-btn-radius)',
+                  boxShadow: 'var(--t-btn-shadow)',
+                }}
+              >
+                <span>{state.submitting ? 'Sending…' : 'Send Message'}</span>
+                {!state.submitting && (
+                  <span aria-hidden="true">→</span>
+                )}
+              </button>
+            </form>
+          )}
         </motion.div>
 
         {/* Social links */}
         <motion.div
-          className="mt-20 flex flex-wrap justify-center gap-4"
+          className="mt-16 flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
