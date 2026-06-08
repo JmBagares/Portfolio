@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#141b33"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="-0.1" r="0.9">
+      <stop offset="0" stop-color="#1b2350" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#1b2350" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="text" x1="380" y1="360" x2="820" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#50dcff"/>
+      <stop offset="1" stop-color="#7c5cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#glow)"/>
+  <text x="600" y="370" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="120" font-weight="800" fill="url(#text)" letter-spacing="-2">SignSense</text>
+  <text x="600" y="450" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="34" font-weight="500" fill="#93a0bd">Real-time ASL recognition &amp; air drawing</text>
+  <text x="600" y="510" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="26" font-weight="600" fill="#50dcff" letter-spacing="4">REACT · MEDIAPIPE · TENSORFLOW</text>
+</svg>
