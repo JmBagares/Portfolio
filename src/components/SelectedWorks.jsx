@@ -35,6 +35,7 @@ const projects = [
     title: 'PetSOS',
     category: 'Mobile App',
     group: 'Mobile',
+    role: 'Lead Developer · Mobile App · Team of 4',
     description: 'Developed a community-based animal rescue mobile app focused on real-time incident reporting, geolocation tracking, volunteer coordination, and clear rescue flows. The product also integrated backend services and AI-assisted response support to help turn reports into faster, more organized action.',
     tags: ['React Native', 'Expo', 'Roboflow', 'OpenRouter (DeepSeek)', 'OpenStreetMap', 'Geolocation', 'API Integration', 'UI/UX', 'AI-Assisted Features'],
     status: 'Thesis Project',
@@ -62,6 +63,7 @@ const projects = [
     title: 'Lunan',
     category: 'Mobile App',
     group: 'Mobile',
+    role: 'Solo Developer · Cross-Platform Mobile App',
     description: 'A cross-platform React Native (Expo) travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map. Features offline local storage, reverse geocoding, photo galleries, categories & ratings, light/dark theming, and JSON backups.',
     tags: ['React Native', 'Expo SDK 56', 'React Navigation', 'Leaflet / OpenStreetMap', 'AsyncStorage', 'expo-location', 'expo-image-picker'],
     status: 'Mobile App',
@@ -83,6 +85,7 @@ const projects = [
       { src: lunanPreviewFive, alt: 'Lunan mobile screen five' },
       { src: lunanPreviewSix, alt: 'Lunan mobile screen six' },
     ],
+    caseStudyUrl: '/case-study-lunan.html',
     links: [
       { label: 'View on GitHub', href: 'https://github.com/JmBagares/Lunan' },
     ],
@@ -92,6 +95,7 @@ const projects = [
     title: 'SignSense',
     category: 'AI / Computer Vision',
     group: 'Web',
+    role: 'Solo Developer · AI / Computer Vision',
     description: 'A real-time American Sign Language recognition and air-drawing web app that runs entirely in the browser. A neural network reads ASL fingerspelling into text, a GRU model recognizes whole-word signs from body and hand motion, and hand gestures let you draw in mid-air — all processed on-device, so the webcam feed never leaves your machine.',
     tags: ['React', 'MediaPipe', 'TensorFlow / Keras', 'Computer Vision', 'Canvas API'],
     status: 'Live Website',
@@ -100,6 +104,7 @@ const projects = [
     previews: [
       { src: '/projects/signsense/cover.svg', alt: 'SignSense real-time ASL recognition' },
     ],
+    caseStudyUrl: '/case-study-signsense.html',
     links: [
       { label: 'Live Demo', href: 'https://sign-sense-chi.vercel.app/' },
     ],
@@ -109,6 +114,7 @@ const projects = [
     title: 'PetSOS Landing Page',
     category: 'Landing Page',
     group: 'Web',
+    role: 'Solo Developer · Promotional Website',
     description: 'A sleek, modern promotional website for the PetSOS animal rescue mobile app. It features a highly interactive GSAP-powered DotGrid background, fluid Framer Motion entry animations, glassmorphism UI elements, and a responsive layout built with React 19 and Tailwind CSS.',
     tags: ['React 19', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'TypeScript'],
     status: 'Live Website',
@@ -139,6 +145,7 @@ const projects = [
     title: 'WordPress Business & Pet Shop Sites',
     category: 'WordPress / Elementor',
     group: 'Web',
+    role: 'Freelance Web Developer · 2 Live Client Sites',
     description: 'Developed and deployed two responsive WordPress websites using Elementor for Magnaval Services and Warduz Pet Shop, customizing themes, structuring service and product content, and refining the mobile experience for clear browsing on every screen size.',
     tags: ['WordPress', 'Elementor', 'Responsive Design', 'Theme Customization'],
     status: 'Live Websites',
@@ -161,6 +168,7 @@ const projects = [
     title: 'Enrollment System Front End',
     category: 'Team Product UI',
     group: 'Web',
+    role: 'Front-End Developer · Team Project',
     description: 'Designed and developed the responsive front end of an enrollment system with React.js, CSS, and Bootstrap, using Axios-powered API requests and real-time form validation to keep the student flow smooth while coordinating closely with the team on backend integration and modern UI polish.',
     tags: ['React.js', 'CSS', 'Bootstrap', 'Axios', 'Form Validation'],
     status: 'Frontend Build',
@@ -181,6 +189,7 @@ const projects = [
     title: "Adventurer's Quest",
     category: 'Game Development',
     group: 'Game',
+    role: 'Solo Developer · 2D Game',
     description: 'Built a 2D adventure game in Godot, designing playable encounters, scene flow, and interaction systems while iterating on level structure and the overall gameplay loop. The project highlights hands-on work with game logic, environment setup, and shaping a more complete player experience from multiple connected scenes.',
     tags: ['Godot', '2D Game Development', 'Scene Design', 'Gameplay Logic'],
     status: 'Game Project',
@@ -202,6 +211,7 @@ const projects = [
     title: 'WebIT',
     category: 'Frontend Development',
     group: 'Web',
+    role: 'Solo Developer · Course Project',
     description: 'Built a fictional company website for a course project, focusing on polished frontend layout, clean section structure, responsive presentation, and a more confident visual flow. The project highlights my ability to translate a subject requirement into a complete landing-page style experience.',
     tags: ['React.js', 'Frontend UI', 'Responsive Design', 'Component Layout'],
     status: 'Subject Project',
@@ -539,9 +549,14 @@ function ProjectCard({ project, index, onOpenProject }) {
               </span>
             )}
           </div>
-          <h3 className="text-2xl mb-4 transition-colors duration-700" style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--card-text)' }}>
+          <h3 className="text-2xl mb-1 transition-colors duration-700" style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--card-text)' }}>
             {project.title}
           </h3>
+          {project.role && (
+            <p className="text-xs font-semibold tracking-[0.06em] mb-3" style={{ color: projectTone }}>
+              {project.role}
+            </p>
+          )}
           <p className="selected-works__summary text-sm leading-6 m-0" style={{ color: 'var(--card-muted)' }}>
             {cardDescription}
           </p>
