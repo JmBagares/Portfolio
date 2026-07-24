@@ -5,11 +5,9 @@ import StreetArtLayer from './StreetArtLayer'
 import { trackEvent } from '../utils/analytics'
 
 const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://www.facebook.com/jm.bagares.14/', external: true },
-  { label: 'GitHub', href: 'https://github.com/JmBagares', external: true },
-  { label: 'Instagram', href: 'https://www.instagram.com/ziim_69/', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jan-manuel-bagares-977760337/', external: true },
-  { label: 'Gmail', href: 'mailto:jmbagares52@gmail.com', external: false },
+  { label: 'GitHub', href: 'https://github.com/JmBagares', external: true },
+  { label: 'Email', href: 'mailto:jmbagares52@gmail.com', external: false },
 ]
 
 const inputStyle = {
@@ -50,11 +48,19 @@ export default function Contact() {
           </span>
           <h2 className="contact-section__title text-4xl md:text-6xl lg:text-7xl mb-6 transition-colors duration-700"
             style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--text-primary)' }}>
-            Have a project in mind?
+            Let's work together
           </h2>
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.18em] px-4 py-2 rounded-full mb-6"
+            style={{
+              backgroundColor: 'color-mix(in srgb, var(--t-accent) 14%, transparent)',
+              color: 'var(--t-accent)',
+              border: '1px solid color-mix(in srgb, var(--t-accent) 26%, transparent)',
+            }}>
+            ● Open to full-time &amp; internship opportunities
+          </span>
           <p className="text-lg md:text-xl max-w-xl mx-auto mb-14 font-light transition-colors duration-700"
             style={{ color: 'var(--text-muted)' }}>
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I'm actively looking for full-time roles and internships as a mobile app and full-stack developer, and I'm always open to freelance projects and collaborations. Whether you're hiring or have an idea to build, let's talk.
           </p>
         </motion.div>
 

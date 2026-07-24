@@ -1,10 +1,12 @@
 import { lazy, Suspense, useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
 import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import AboutMe from './components/AboutMe'
 import SelectedWorks from './components/SelectedWorks'
 import Skills from './components/Skills'
+import Experience from './components/Experience'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
@@ -25,28 +27,31 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen">
-      <Preloader />
-      <CustomCursor />
-      <Navbar />
-      <InfoGuide />
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen">
+        <Preloader />
+        <CustomCursor />
+        <Navbar />
+        <InfoGuide />
 
-      <main className="portfolio-shell relative">
-        <Hero />
-        <AboutMe />
-        <SelectedWorks />
+        <main className="portfolio-shell relative">
+          <Hero />
+          <AboutMe />
+          <SelectedWorks />
 
-        <ErrorBoundary>
-          <Suspense fallback={<div style={{ minHeight: '60vh' }} aria-hidden="true" />}>
-            <TurntableSection />
-          </Suspense>
-        </ErrorBoundary>
+          <ErrorBoundary>
+            <Suspense fallback={<div style={{ minHeight: '60vh' }} aria-hidden="true" />}>
+              <TurntableSection />
+            </Suspense>
+          </ErrorBoundary>
 
-        <Skills />
-        <Education />
-        <Contact />
-      </main>
-      <Analytics />
-    </div>
+          <Skills />
+          <Experience />
+          <Education />
+          <Contact />
+        </main>
+        <Analytics />
+      </div>
+    </MotionConfig>
   )
 }

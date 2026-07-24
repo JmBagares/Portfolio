@@ -105,7 +105,7 @@ export default function AboutMe() {
               style={{ color: "var(--t-text)" }}
             >
               Passionate and driven{" "}
-              <strong className="font-semibold">Front-End Developer</strong>{" "}
+              <strong className="font-semibold">Mobile App &amp; Full-Stack Developer</strong>{" "}
               based in Las Piñas, Metro Manila, Philippines. Dedicated to
               creating modern, user-focused digital experiences and contributing
               to impactful projects.
@@ -115,18 +115,20 @@ export default function AboutMe() {
               className="text-base md:text-lg leading-relaxed font-light transition-colors duration-700"
               style={{ color: "var(--t-text-muted)" }}
             >
-              I combine creativity and logic to build responsive applications
-              and engaging UI/UX experiences. My technical foundation includes
+              I combine creativity and logic to build cross-platform mobile
+              apps and responsive web applications end to end. My technical
+              foundation spans
               <strong
                 className="font-medium"
                 style={{ color: "var(--t-text)" }}
               >
                 {" "}
-                HTML, CSS, JavaScript, React.js, and React Native
+                React Native, Expo, and TypeScript on mobile, React.js on the
+                web, and backend services with Supabase
               </strong>
               , supported by hands-on experience in PC maintenance, assembly,
-              and troubleshooting. I enjoy solving problems through both
-              software development and hardware expertise.
+              and troubleshooting. I enjoy solving problems across the full
+              stack, from software development to hardware expertise.
             </p>
 
             {/* Featured Project Card */}
