@@ -8,6 +8,7 @@ const navLinks = [
   { label: 'Works', href: '#selected-works', sectionId: 'selected-works' },
   { label: 'Music', href: '#music', sectionId: 'music' },
   { label: 'Skills', href: '#skills', sectionId: 'skills' },
+  { label: 'Experience', href: '#experience', sectionId: 'experience' },
   { label: 'Education', href: '#education', sectionId: 'education' },
   { label: 'Contact', href: '#contact', sectionId: 'contact' },
 ]

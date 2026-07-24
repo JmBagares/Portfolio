@@ -49,7 +49,7 @@ export default function Preloader() {
               Welcome<span>.</span>
             </span>
             <span className="preloader__tagline">
-              I&apos;m Jan Manuel, a React Native &amp; Front-End Developer. Make yourself at home and take a look around my work.
+              I&apos;m Jan Manuel, a Mobile App &amp; Full-Stack Developer. Make yourself at home and take a look around my work.
             </span>
 
             <button type="button" className="preloader__btn" onClick={handleEnter}>

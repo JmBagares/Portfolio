@@ -131,7 +131,22 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-subtitle" variants={heroItemVariants}>
-            React Native & Front-End Developer
+            Mobile App & Full-Stack Developer
+          </motion.p>
+
+          <motion.p
+            className="hero-availability"
+            variants={heroItemVariants}
+            style={{
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              opacity: 0.78,
+              margin: '0.35rem 0 0',
+            }}
+          >
+            Metro Manila, PH · Open to Remote &amp; On-site Roles
           </motion.p>
 
           <motion.p className="hero-description" variants={heroItemVariants}>
@@ -140,18 +155,18 @@ export default function Hero() {
 
           <motion.div className="hero-stats" variants={heroItemVariants}>
             <span className="hero-stat">
-              <span className="hero-stat__number">6</span>
+              <span className="hero-stat__number">8</span>
               <span className="hero-stat__label">Projects</span>
             </span>
             <span className="hero-stat__divider" aria-hidden="true" />
             <span className="hero-stat">
-              <span className="hero-stat__number">5+</span>
+              <span className="hero-stat__number">20+</span>
               <span className="hero-stat__label">Technologies</span>
             </span>
             <span className="hero-stat__divider" aria-hidden="true" />
             <span className="hero-stat">
-              <span className="hero-stat__number">1</span>
-              <span className="hero-stat__label">Thesis</span>
+              <span className="hero-stat__number">4.64</span>
+              <span className="hero-stat__label">Thesis Rating</span>
             </span>
           </motion.div>
 
