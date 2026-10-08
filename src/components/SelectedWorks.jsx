@@ -35,9 +35,10 @@ const projects = [
     title: 'PetSOS',
     category: 'Mobile App',
     group: 'Mobile',
-    role: 'Lead Developer · Mobile App · Team of 4',
-    description: 'Developed a community-based animal rescue mobile app focused on real-time incident reporting, geolocation tracking, volunteer coordination, and clear rescue flows. The product also integrated backend services and AI-assisted response support to help turn reports into faster, more organized action.',
-    tags: ['React Native', 'Expo', 'Roboflow', 'OpenRouter (DeepSeek)', 'OpenStreetMap', 'Geolocation', 'API Integration', 'UI/UX', 'AI-Assisted Features'],
+    role: 'Mobile App Lead Developer · Four-Person Thesis Team',
+    description: 'An AI-assisted animal-rescue application that helps residents report incidents with location data and coordinates volunteers through a shared, real-time response flow. I led the mobile application work within our four-person team; the complete thesis, admin tooling, and research were collaborative work.',
+    tags: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'PostgreSQL', 'Roboflow', 'OpenRouter', 'Geoapify', 'Authentication'],
+    highlights: ['Geotagged incident reporting and live volunteer coordination', 'Supabase authentication and real-time database updates', 'AI, mapping, notification, and third-party API integrations'],
     status: 'Thesis Project',
     color: '#56B6C6',
     image: petSosPreviewOne,
@@ -66,6 +67,7 @@ const projects = [
     role: 'Solo Developer · Cross-Platform Mobile App',
     description: 'A cross-platform React Native (Expo) travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map. Features offline local storage, reverse geocoding, photo galleries, categories & ratings, light/dark theming, and JSON backups.',
     tags: ['React Native', 'Expo SDK 56', 'React Navigation', 'Leaflet / OpenStreetMap', 'AsyncStorage', 'expo-location', 'expo-image-picker'],
+    highlights: ['Offline-first local data with AsyncStorage', 'Interactive maps and reverse geocoding', 'Photo galleries, categories, ratings, and JSON backups'],
     status: 'Mobile App',
     color: '#8ACBD0',
     image: lunanPreviewOne,
@@ -98,6 +100,7 @@ const projects = [
     role: 'Solo Developer · AI / Computer Vision',
     description: 'A real-time American Sign Language recognition and air-drawing web app that runs entirely in the browser. A neural network reads ASL fingerspelling into text, a GRU model recognizes whole-word signs from body and hand motion, and hand gestures let you draw in mid-air — all processed on-device, so the webcam feed never leaves your machine.',
     tags: ['React', 'MediaPipe', 'TensorFlow / Keras', 'Computer Vision', 'Canvas API'],
+    highlights: ['Real-time webcam landmark extraction with MediaPipe', 'Fingerspelling and GRU sequence-model inference', 'Private, on-device processing and gesture drawing'],
     status: 'Live Website',
     color: '#7C5CFF',
     image: '/projects/signsense/cover.svg',
@@ -107,6 +110,7 @@ const projects = [
     caseStudyUrl: '/case-study-signsense.html',
     links: [
       { label: 'Live Demo', href: 'https://sign-sense-chi.vercel.app/' },
+      { label: 'View on GitHub', href: 'https://github.com/JmBagares/SignLanguageDetector' },
     ],
   },
   {
@@ -115,8 +119,9 @@ const projects = [
     category: 'Landing Page',
     group: 'Web',
     role: 'Solo Developer · Promotional Website',
-    description: 'A sleek, modern promotional website for the PetSOS animal rescue mobile app. It features a highly interactive GSAP-powered DotGrid background, fluid Framer Motion entry animations, glassmorphism UI elements, and a responsive layout built with React 19 and Tailwind CSS.',
+    description: 'A responsive promotional website that explains the PetSOS rescue application and guides visitors through its purpose and features. I built the page solo with reusable React components, TypeScript, Tailwind CSS, and motion-based interactions across desktop and mobile layouts.',
     tags: ['React 19', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'TypeScript'],
+    highlights: ['Reusable responsive sections and interface components', 'Motion, hover, and DotGrid background interactions', 'Mobile-first layouts with clear product calls to action'],
     status: 'Live Website',
     color: '#F59E0B',
     image: landingPageOne,
@@ -136,8 +141,10 @@ const projects = [
       { src: landingPageFive, alt: 'PetSOS landing page preview 5' },
       { src: landingPageSix, alt: 'PetSOS landing page preview 6' },
     ],
+    caseStudyUrl: '/case-study-petsos-landing.html',
     links: [
       { label: 'Visit Website', href: 'https://pet-sos.vercel.app/' },
+      { label: 'View on GitHub', href: 'https://github.com/JmBagares/Landing-Page-PetSOS' },
     ],
   },
   {
@@ -145,9 +152,10 @@ const projects = [
     title: 'WordPress Business & Pet Shop Sites',
     category: 'WordPress / Elementor',
     group: 'Web',
-    role: 'Freelance Web Developer · 2 Live Client Sites',
-    description: 'Developed and deployed two responsive WordPress websites using Elementor for Magnaval Services and Warduz Pet Shop, customizing themes, structuring service and product content, and refining the mobile experience for clear browsing on every screen size.',
+    role: 'IT Intern · Two Live Company Websites',
+    description: 'Built and deployed responsive WordPress websites for Magnaval Services and Warduz Petshop during my IT internship, using cPanel and custom domain configuration to publish the sites and refining their content for desktop and mobile visitors.',
     tags: ['WordPress', 'Elementor', 'Responsive Design', 'Theme Customization'],
+    highlights: ['WordPress page building and theme customization', 'Responsive service and product presentation', 'cPanel deployment and custom domain configuration'],
     status: 'Live Websites',
     color: '#D4AF37',
     previews: [
@@ -165,12 +173,13 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Enrollment System Front End',
+    title: 'CvSU Enrollment System',
     category: 'Team Product UI',
     group: 'Web',
     role: 'Front-End Developer · Team Project',
-    description: 'Designed and developed the responsive front end of an enrollment system with React.js, CSS, and Bootstrap, using Axios-powered API requests and real-time form validation to keep the student flow smooth while coordinating closely with the team on backend integration and modern UI polish.',
+    description: 'A responsive enrollment interface that guides students through data entry and communicates with the team-built backend. I developed the React front end, implemented form validation and Axios requests, and coordinated API behavior with the backend developers.',
     tags: ['React.js', 'CSS', 'Bootstrap', 'Axios', 'Form Validation'],
+    highlights: ['Responsive enrollment screens with Bootstrap and CSS', 'Client-side form validation and user feedback', 'Axios API requests coordinated with backend developers'],
     status: 'Frontend Build',
     color: '#8ACBD0',
     image: enrollmentPreview,
@@ -180,6 +189,7 @@ const projects = [
       { src: enrollmentPreviewThree, alt: 'Enrollment System front end preview three' },
       { src: enrollmentPreviewFour, alt: 'Enrollment System front end preview four' },
     ],
+    caseStudyUrl: '/case-study-enrollment.html',
     links: [
       { label: 'View on GitHub', href: 'https://github.com/JmBagares/Enrollment-System' },
     ],
@@ -192,6 +202,7 @@ const projects = [
     role: 'Solo Developer · 2D Game',
     description: 'Built a 2D adventure game in Godot, designing playable encounters, scene flow, and interaction systems while iterating on level structure and the overall gameplay loop. The project highlights hands-on work with game logic, environment setup, and shaping a more complete player experience from multiple connected scenes.',
     tags: ['Godot', '2D Game Development', 'Scene Design', 'Gameplay Logic'],
+    highlights: ['Playable encounters and interaction logic', 'Connected scene and level flow', 'Iterative gameplay-loop development'],
     status: 'Game Project',
     color: '#D4AF37',
     previews: [
@@ -214,17 +225,20 @@ const projects = [
     role: 'Solo Developer · Course Project',
     description: 'Built a fictional company website for a course project, focusing on polished frontend layout, clean section structure, responsive presentation, and a more confident visual flow. The project highlights my ability to translate a subject requirement into a complete landing-page style experience.',
     tags: ['React.js', 'Frontend UI', 'Responsive Design', 'Component Layout'],
+    highlights: ['Responsive frontend section layout', 'Reusable React component structure', 'Landing-page visual hierarchy and navigation'],
     status: 'Subject Project',
     color: '#56B6C6',
     image: webItPreview,
     previews: [
       { src: webItPreview, alt: 'WebIT website preview' },
     ],
-    links: [
-      { label: 'Visit Website', href: 'https://webit-fj6kgkjsx-jmbagares-projects.vercel.app/' },
-    ],
   },
 ]
+
+const PROJECT_PRIORITY = [6, 1, 3, 8, 7, 2, 4, 5]
+const orderedProjects = [...projects].sort(
+  (projectA, projectB) => PROJECT_PRIORITY.indexOf(projectA.id) - PROJECT_PRIORITY.indexOf(projectB.id),
+)
 
 function getCardDescription(description, maxLength = 150) {
   if (description.length <= maxLength) {
@@ -553,13 +567,28 @@ function ProjectCard({ project, index, onOpenProject }) {
             {project.title}
           </h3>
           {project.role && (
-            <p className="text-xs font-semibold tracking-[0.06em] mb-3" style={{ color: projectTone }}>
-              {project.role}
-            </p>
+            <div className="mb-1">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: 'var(--label-text)' }}>
+                My responsibility
+              </span>
+              <p className="mt-1 text-xs font-semibold tracking-[0.04em]" style={{ color: projectTone }}>
+                {project.role}
+              </p>
+            </div>
           )}
           <p className="selected-works__summary text-sm leading-6 m-0" style={{ color: 'var(--card-muted)' }}>
             {cardDescription}
           </p>
+          {project.highlights?.length ? (
+            <ul className="space-y-2" aria-label={`${project.title} technical highlights`}>
+              {project.highlights.map((highlight) => (
+                <li key={highlight} className="relative pl-4 text-xs leading-5" style={{ color: 'var(--card-muted)' }}>
+                  <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: projectTone }} />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span key={tag} className="text-xs px-3 py-1 rounded-full font-medium"
@@ -573,6 +602,18 @@ function ProjectCard({ project, index, onOpenProject }) {
             ))}
           </div>
           <div className="mt-auto flex flex-col gap-3 pt-1">
+            <button
+              type="button"
+              className="w-full rounded-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5 sm:w-fit"
+              style={{
+                backgroundColor: 'transparent',
+                color: projectTone,
+                border: `1px solid ${projectTone}`,
+              }}
+              onClick={() => onOpenProject(project)}
+            >
+              View Details
+            </button>
             {hasPhonePreview ? (
               <button
                 type="button"
@@ -627,6 +668,11 @@ function ProjectCard({ project, index, onOpenProject }) {
 
 function ProjectModal({ project, onClose }) {
   const [activePreviewIndex, setActivePreviewIndex] = useState(0)
+  const closeButtonRef = useRef(null)
+
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+  }, [])
 
   if (!project) {
     return null
@@ -688,6 +734,7 @@ function ProjectModal({ project, onClose }) {
             </div>
 
             <button
+              ref={closeButtonRef}
               type="button"
               className="selected-works-modal__close"
               aria-label={`Close ${project.title} project details`}
@@ -734,9 +781,29 @@ function ProjectModal({ project, onClose }) {
             </div>
 
             <div className="selected-works-modal__details">
+              {project.role ? (
+                <div className="selected-works-modal__section">
+                  <span className="selected-works-modal__section-label">My Responsibility</span>
+                  <p className="selected-works-modal__description">{project.role}</p>
+                </div>
+              ) : null}
               <p id={modalDescriptionId} className="selected-works-modal__description">
                 {project.description}
               </p>
+
+              {project.highlights?.length ? (
+                <div className="selected-works-modal__section">
+                  <span className="selected-works-modal__section-label">Technical Highlights</span>
+                  <ul className="space-y-2">
+                    {project.highlights.map((highlight) => (
+                      <li key={highlight} className="relative pl-5 text-sm leading-6" style={{ color: 'var(--card-muted)' }}>
+                        <span className="absolute left-0 top-2.5 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: project.color }} />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
 
               {project.tags?.length ? (
                 <div className="selected-works-modal__section">
@@ -777,6 +844,14 @@ function ProjectModal({ project, onClose }) {
                   </div>
                 </div>
               ) : null}
+
+              {project.caseStudyUrl ? (
+                <div className="selected-works-modal__section">
+                  <a href={project.caseStudyUrl} className="selected-works-modal__link">
+                    Read Full Case Study
+                  </a>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
@@ -785,7 +860,7 @@ function ProjectModal({ project, onClose }) {
   )
 }
 
-const PROJECT_FILTERS = ['All', ...Array.from(new Set(projects.map((project) => project.group).filter(Boolean)))]
+const PROJECT_FILTERS = ['All', ...Array.from(new Set(orderedProjects.map((project) => project.group).filter(Boolean)))]
 
 export default function SelectedWorks() {
   const sectionRef = useRef(null)
@@ -795,8 +870,8 @@ export default function SelectedWorks() {
   const [activeFilter, setActiveFilter] = useState('All')
 
   const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter((project) => project.group === activeFilter)
+    ? orderedProjects
+    : orderedProjects.filter((project) => project.group === activeFilter)
   const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 4)
 
   const handleFilterChange = (filter) => {

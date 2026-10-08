@@ -17,35 +17,56 @@ const stickerTilts = ['-5deg', '3deg', '-2deg', '6deg', '-7deg', '2deg']
 
 const skillCategories = [
   {
-    label: 'Full-Stack Development',
+    label: 'Frontend Development',
     skills: [
-      { name: 'React Native', color: '#8ACBD0' },
-      { name: 'Expo', color: '#56B6C6' },
       { name: 'React', color: '#8ACBD0' },
-      { name: 'TypeScript', color: '#56B6C6' },
       { name: 'JavaScript', color: '#8ACBD0' },
-      { name: 'HTML5 / CSS', color: '#56B6C6' },
+      { name: 'TypeScript', color: '#56B6C6' },
+      { name: 'HTML5', color: '#8ACBD0' },
+      { name: 'CSS3', color: '#56B6C6' },
       { name: 'Tailwind CSS', color: '#8ACBD0' },
-      { name: 'Framer Motion', color: '#56B6C6' },
+      { name: 'Bootstrap', color: '#56B6C6' },
       { name: 'Vite', color: '#8ACBD0' },
-      { name: 'Supabase', color: '#56B6C6' },
-      { name: 'PostgreSQL', color: '#8ACBD0' },
-      { name: 'REST APIs', color: '#56B6C6' },
-      { name: 'Auth & Row-Level Security', color: '#8ACBD0' },
-      { name: 'Real-Time Data Sync', color: '#56B6C6' },
-      { name: 'AI / API Integration', color: '#8ACBD0' },
-      { name: 'Git', color: '#56B6C6' },
+      { name: 'Framer Motion', color: '#56B6C6' },
     ],
   },
   {
-    label: 'Design & Hardware',
+    label: 'Mobile Development',
     skills: [
+      { name: 'React Native', color: '#8ACBD0' },
+      { name: 'Expo', color: '#56B6C6' },
+      { name: 'Cross-Platform Development', color: '#8ACBD0' },
+      { name: 'Push Notifications', color: '#56B6C6' },
+      { name: 'Geolocation', color: '#8ACBD0' },
+    ],
+  },
+  {
+    label: 'Backend & Database',
+    skills: [
+      { name: 'Supabase', color: '#56B6C6' },
+      { name: 'PostgreSQL', color: '#8ACBD0' },
+      { name: 'REST API Integration', color: '#56B6C6' },
+      { name: 'Authentication', color: '#8ACBD0' },
+      { name: 'Real-Time Data Synchronization', color: '#56B6C6' },
+    ],
+  },
+  {
+    label: 'Tools & Workflow',
+    skills: [
+      { name: 'Git', color: '#56B6C6' },
+      { name: 'GitHub', color: '#8ACBD0' },
+      { name: 'Axios', color: '#56B6C6' },
       { name: 'WordPress', color: '#8ACBD0' },
-      { name: 'Elementor', color: '#56B6C6' },
-      { name: 'Photoshop', color: '#8ACBD0' },
-      { name: 'PC Assembly & Troubleshooting', color: '#56B6C6' },
-      { name: 'Computer Hardware & Maintenance', color: '#8ACBD0' },
-      { name: 'Networking Basics', color: '#56B6C6' },
+      { name: 'cPanel', color: '#56B6C6' },
+    ],
+  },
+  {
+    label: 'Additional Technical Skills',
+    skills: [
+      { name: 'PC Troubleshooting', color: '#8ACBD0' },
+      { name: 'Basic Networking', color: '#56B6C6' },
+      { name: 'Hardware Maintenance', color: '#8ACBD0' },
+      { name: 'Photoshop', color: '#56B6C6' },
     ],
   },
 ]
@@ -101,7 +122,7 @@ function SkillPill({ skill, index }) {
 }
 
 export default function Skills() {
-  const { theme, themeId } = useTheme()
+  const { themeId } = useTheme()
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
   const isHipHopTheme = themeId === 'hip-hop-mix'
@@ -139,7 +160,7 @@ export default function Skills() {
             {skillCategories.map((category, categoryIndex) => (
               <motion.article
                 key={category.label}
-                className={`skills-wall__column skills-wall__column--${categoryIndex + 1}`}
+                className={`skills-wall__column skills-wall__column--${(categoryIndex % 2) + 1}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}

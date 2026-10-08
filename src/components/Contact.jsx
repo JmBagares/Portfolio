@@ -56,11 +56,11 @@ export default function Contact() {
               color: 'var(--t-accent)',
               border: '1px solid color-mix(in srgb, var(--t-accent) 26%, transparent)',
             }}>
-            ● Open to full-time &amp; internship opportunities
+            ● Open to junior software development opportunities
           </span>
           <p className="text-lg md:text-xl max-w-xl mx-auto mb-14 font-light transition-colors duration-700"
             style={{ color: 'var(--text-muted)' }}>
-            I'm actively looking for full-time roles and internships as a mobile app and full-stack developer, and I'm always open to freelance projects and collaborations. Whether you're hiring or have an idea to build, let's talk.
+            Open to junior software development opportunities, including remote, hybrid, on-site, full-time, part-time, and freelance roles.
           </p>
         </motion.div>
 

@@ -102,6 +102,10 @@ export default function Hero() {
     document.getElementById('selected-works')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section
       id="hero"
@@ -131,7 +135,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-subtitle" variants={heroItemVariants}>
-            Mobile App & Full-Stack Developer
+            Junior Full-Stack Developer | React &amp; TypeScript
           </motion.p>
 
           <motion.p
@@ -146,43 +150,50 @@ export default function Hero() {
               margin: '0.35rem 0 0',
             }}
           >
-            Metro Manila, PH · Open to Remote &amp; On-site Roles
+            Las Pi&ntilde;as City, Metro Manila, Philippines
+            <span className="block mt-2 normal-case tracking-[0.04em]">
+              Open to remote, hybrid, on-site, part-time, freelance, and full-time opportunities
+            </span>
           </motion.p>
 
           <motion.p className="hero-description" variants={heroItemVariants}>
-            Building responsive apps, clean UI, and reliable tech solutions with confidence and purpose.
+            I&apos;m a Computer Science graduate passionate about building responsive web applications,
+            cross-platform mobile apps, and reliable backend solutions. I enjoy transforming ideas into
+            functional products and continuously improving my development skills.
           </motion.p>
 
           <motion.div className="hero-stats" variants={heroItemVariants}>
             <span className="hero-stat">
-              <span className="hero-stat__number">8</span>
-              <span className="hero-stat__label">Projects</span>
+              <span className="hero-stat__number">BSCS</span>
+              <span className="hero-stat__label">2026 Graduate</span>
             </span>
             <span className="hero-stat__divider" aria-hidden="true" />
             <span className="hero-stat">
-              <span className="hero-stat__number">20+</span>
-              <span className="hero-stat__label">Technologies</span>
+              <span className="hero-stat__number">React</span>
+              <span className="hero-stat__label">TypeScript</span>
             </span>
             <span className="hero-stat__divider" aria-hidden="true" />
             <span className="hero-stat">
-              <span className="hero-stat__number">4.64</span>
-              <span className="hero-stat__label">Thesis Rating</span>
+              <span className="hero-stat__number">Open</span>
+              <span className="hero-stat__label">Flexible Setup</span>
             </span>
           </motion.div>
 
           <motion.div className="hero-cta-wrap" variants={heroItemVariants}>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <MagneticButton onClick={scrollToWorks}>
-                View Selected Works
+                View Projects
               </MagneticButton>
               <MagneticButton
                 href={cvFile}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="View Jan Manuel Bagares CV in a new tab"
-                onClick={() => trackEvent('cv_view', { location: 'hero' })}
+                download="Jan Manuel Bagares CV.pdf"
+                aria-label="Download Jan Manuel Bagares resume"
+                onClick={() => trackEvent('cv_download', { location: 'hero' })}
               >
-                View CV
+                Download Resume
+              </MagneticButton>
+              <MagneticButton onClick={scrollToContact}>
+                Contact Me
               </MagneticButton>
             </div>
           </motion.div>

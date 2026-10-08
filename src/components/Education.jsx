@@ -7,8 +7,8 @@ const education = [
     id: 1,
     school: 'Cavite State University - Bacoor Campus',
     degree: 'Bachelor of Science in Computer Science',
-    period: 'Expected Graduation: 2026',
-    current: true,
+    period: '2022–2026 · Graduated September 17, 2026',
+    current: false,
     color: '#56B6C6',
   },
   {

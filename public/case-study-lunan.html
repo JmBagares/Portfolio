@@ -217,22 +217,27 @@
     </div>
 
     <section class="block">
-      <h2>Overview</h2>
+      <h2>1. Project Overview</h2>
       <p>Lunan is a self-directed cross-platform mobile app for keeping a private travel diary. You drop pins on an interactive map, attach photos, notes, categories, and ratings, and come back to revisit the places that mattered &mdash; all stored on your device, with no account required.</p>
     </section>
 
     <section class="block">
-      <h2>The Idea</h2>
+      <h2>2. Problem and Objectives</h2>
       <p>I wanted a travel journal that respected privacy and worked anywhere, including places with no signal. That meant an offline-first design: everything lives on the device, nothing depends on a login or a server, and the map, photos, and notes all stay usable on the road.</p>
     </section>
 
     <section class="block">
-      <h2>My Role</h2>
+      <h2>3. My Role and Contributions</h2>
       <p>I designed and built Lunan solo, from the map and data model to the UI, theming, and the backup and restore flow.</p>
     </section>
 
     <section class="block">
-      <h2>What I Built</h2>
+      <h2>4. Technology Stack</h2>
+      <p>React Native and Expo provide the cross-platform app foundation. React Navigation manages screen flow, Leaflet and OpenStreetMap provide the map, AsyncStorage persists diary data, and Expo location and image-picker APIs support native device features.</p>
+    </section>
+
+    <section class="block">
+      <h2>5. Key Features</h2>
       <ul>
         <li><strong>Map-based pinning:</strong> drop and revisit places on an interactive map with photos and notes attached to each spot</li>
         <li><strong>Reverse geocoding:</strong> automatically names locations from their coordinates</li>
@@ -243,13 +248,28 @@
     </section>
 
     <section class="block">
-      <h2>Tech Decisions</h2>
+      <h2>6. Technical Implementation</h2>
       <ul>
         <li><strong>React Native + Expo SDK 56:</strong> one codebase targeting both iOS and Android, with fast on-device testing</li>
         <li><strong>Leaflet / OpenStreetMap:</strong> flexible, no-cost mapping and geolocation without proprietary API keys</li>
         <li><strong>AsyncStorage:</strong> an offline-first persistence layer that keeps data private and available without a network</li>
         <li><strong>expo-location &amp; expo-image-picker:</strong> native geolocation and camera / gallery access for capturing places on the go</li>
       </ul>
+    </section>
+
+    <section class="block">
+      <h2>7. Challenges and Solutions</h2>
+      <p>The core constraint was keeping a map-based travel diary useful without an account or dependable connection. I used an offline-first data model with AsyncStorage, retained user-created content on the device, and added JSON export and import so data could be backed up or moved.</p>
+    </section>
+
+    <section class="block">
+      <h2>8. Testing and Results</h2>
+      <p>The source repository and application screenshots are available for review. The current project material does not include a formal usability score or performance benchmark, so no unsupported metric is claimed.</p>
+    </section>
+
+    <section class="block">
+      <h2>9. What I Learned</h2>
+      <p>Lunan strengthened my experience with offline mobile state, location and media permissions, map-based interaction, and designing import and export flows around user-owned data.</p>
     </section>
 
     <footer>

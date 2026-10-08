@@ -39,8 +39,11 @@ export default function Navbar() {
       updateActiveSection()
     }
     window.addEventListener('scroll', onScroll, { passive: true })
-    updateActiveSection()
-    return () => window.removeEventListener('scroll', onScroll)
+    const initialUpdateFrame = window.requestAnimationFrame(onScroll)
+    return () => {
+      window.cancelAnimationFrame(initialUpdateFrame)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [updateActiveSection])
 
   return (
@@ -105,7 +108,9 @@ export default function Navbar() {
         <button
           className="md:hidden flex flex-col gap-1.5 bg-transparent border-none p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-navigation"
         >
           <motion.span
             animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -129,6 +134,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

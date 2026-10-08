@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { useRef, useEffect, forwardRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { EffectComposer, wrapEffect } from '@react-three/postprocessing'
@@ -285,6 +284,11 @@ function DitheredWaves({
     mouseRef.current.set(resolution.x * 0.5, resolution.y * 0.5)
   }, [])
 
+  // Three.js uniforms are intentionally a stable imperative object. Reading the
+  // initial ref here passes that same object to the shader without driving React UI.
+  // eslint-disable-next-line react-hooks/refs
+  const shaderUniforms = waveUniformsRef.current
+
   return (
     <>
       <mesh ref={mesh} scale={[viewport.width, viewport.height, 1]}>
@@ -292,7 +296,7 @@ function DitheredWaves({
         <shaderMaterial
           vertexShader={waveVertexShader}
           fragmentShader={waveFragmentShader}
-          uniforms={waveUniformsRef.current}
+          uniforms={shaderUniforms}
         />
       </mesh>
 

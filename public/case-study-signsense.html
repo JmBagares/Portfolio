@@ -217,22 +217,27 @@
     </div>
 
     <section class="block">
-      <h2>Overview</h2>
+      <h2>1. Project Overview</h2>
       <p>SignSense is a self-directed project exploring on-device machine learning for accessibility. It reads American Sign Language from a live webcam feed and turns it into text in real time, and it also lets you draw in mid-air with hand gestures &mdash; all processed locally in the browser, with nothing sent to a server.</p>
     </section>
 
     <section class="block">
-      <h2>The Idea</h2>
+      <h2>2. Problem and Objectives</h2>
       <p>Most sign-language recognition tools depend on cloud services, which introduces latency, running costs, and a privacy trade-off: your camera feed has to leave your machine. I wanted to see how far I could push a fully client-side approach &mdash; fast enough to feel real-time, private by design, and with no backend to pay for or maintain.</p>
     </section>
 
     <section class="block">
-      <h2>My Role</h2>
+      <h2>3. My Role and Contributions</h2>
       <p>I built SignSense solo, end to end: the landmark-extraction pipeline, the machine-learning models and their training, the real-time inference loop, and the React front end with the air-drawing canvas.</p>
     </section>
 
     <section class="block">
-      <h2>What I Built</h2>
+      <h2>4. Technology Stack</h2>
+      <p>React and the Canvas API provide the interface, MediaPipe extracts hand and pose landmarks, and TensorFlow / Keras models handle static fingerspelling and GRU-based motion sequences. The inference pipeline runs on the user&apos;s device.</p>
+    </section>
+
+    <section class="block">
+      <h2>5. Key Features</h2>
       <ul>
         <li><strong>Fingerspelling recognition:</strong> a neural network reads ASL alphabet handshapes and transcribes them into text</li>
         <li><strong>Whole-word sign recognition:</strong> a GRU sequence model recognizes complete signs from body and hand motion over time</li>
@@ -242,7 +247,7 @@
     </section>
 
     <section class="block">
-      <h2>Tech Decisions</h2>
+      <h2>6. Technical Implementation</h2>
       <ul>
         <li><strong>MediaPipe:</strong> fast, reliable hand and pose landmark extraction directly in the browser, the foundation for both recognition and drawing</li>
         <li><strong>TensorFlow / Keras + GRU:</strong> a frame-based classifier for static fingerspelling and a recurrent GRU model for motion-based whole-word signs</li>
@@ -251,8 +256,24 @@
       </ul>
     </section>
 
+    <section class="block">
+      <h2>7. Challenges and Solutions</h2>
+      <p>Real-time recognition needed to avoid the latency and privacy cost of uploading camera frames. I used MediaPipe landmarks as compact model inputs and kept inference in the browser, allowing both the recognition and air-drawing interactions to work without sending the webcam feed to a backend.</p>
+    </section>
+
+    <section class="block">
+      <h2>8. Testing and Results</h2>
+      <p>The live application is available for hands-on review. The current portfolio material does not document a formal accuracy study or performance benchmark, so no unsupported metric is presented.</p>
+    </section>
+
+    <section class="block">
+      <h2>9. What I Learned</h2>
+      <p>This project developed my understanding of browser-based machine-learning pipelines, time-sequence modeling, camera interaction, and the trade-offs involved in keeping computer-vision features private and responsive on the client.</p>
+    </section>
+
     <footer>
       <a class="btn btn-primary" href="https://sign-sense-chi.vercel.app/" target="_blank" rel="noreferrer noopener">Try the Live Demo</a>
+      <a class="btn btn-ghost" href="https://github.com/JmBagares/SignLanguageDetector" target="_blank" rel="noreferrer noopener">View on GitHub</a>
       <a class="btn btn-ghost" href="/">Back to Portfolio</a>
     </footer>
   </div>

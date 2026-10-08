@@ -10,6 +10,8 @@ const ThemeContext = createContext(null)
  *   theme        – the full config object for the active theme
  *   setThemeSource – call with { songId } to trigger theme changes
  */
+// Context and provider intentionally share a module so consumers import one public theme API.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
   const ctx = useContext(ThemeContext)
   if (!ctx) throw new Error('useTheme must be used inside <ThemeProvider>')

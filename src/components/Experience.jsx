@@ -2,33 +2,19 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import StreetArtLayer from './StreetArtLayer'
 
-// NOTE: `period` values below are placeholders — update them to the real
-// dates for each engagement before sharing this with recruiters.
 const experience = [
   {
     id: 1,
-    role: 'Lead Developer — Mobile Application',
-    org: 'PetSOS · Undergraduate Thesis (Cavite State University × Dasmariñas City Veterinary Office)',
-    period: '2025 – 2026',
-    current: true,
+    role: 'IT Intern',
+    org: 'Magnaval Services',
+    period: 'July 2025 – August 2025',
+    current: false,
     color: '#56B6C6',
     points: [
-      'Led a four-person team and built the React Native (Expo, TypeScript) mobile app from the ground up.',
-      'Implemented geotagged incident reporting, volunteer dispatch with live tracking, and camera-based rescue proof.',
-      'Integrated the app with a Supabase backend and an AI prioritization service (Roboflow).',
-      'Scored 4.64 / 5 (“Excellent”) on the ISO 25010 quality model across 50 evaluators.',
-    ],
-  },
-  {
-    id: 2,
-    role: 'Freelance Web Developer',
-    org: 'Magnaval Services & Warduz Pet Shop · Client Work',
-    period: '2024',
-    current: false,
-    color: '#8ACBD0',
-    points: [
-      'Designed, built, and deployed two live, responsive WordPress / Elementor business sites for real clients.',
-      'Customized themes, structured service and product content, and refined the mobile experience across screen sizes.',
+      'Built and deployed two company websites for Magnaval Services and Warduz Petshop using WordPress, cPanel, and custom domain configuration.',
+      'Improved responsive page layouts and organized service and product content for clear browsing across screen sizes.',
+      'Performed hardware and software troubleshooting and assisted with networking, CCTV, and biometric access installations.',
+      'Supported client requests and prepared technical documentation.',
     ],
   },
 ]

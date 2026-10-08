@@ -104,31 +104,28 @@ export default function AboutMe() {
               className="text-lg md:text-xl leading-relaxed font-light transition-colors duration-700"
               style={{ color: "var(--t-text)" }}
             >
-              Passionate and driven{" "}
-              <strong className="font-semibold">Mobile App &amp; Full-Stack Developer</strong>{" "}
-              based in Las Piñas, Metro Manila, Philippines. Dedicated to
-              creating modern, user-focused digital experiences and contributing
-              to impactful projects.
+              I&apos;m a <strong className="font-semibold">Computer Science graduate and junior full-stack developer</strong>{" "}
+              based in Las Pi&ntilde;as City, Metro Manila. I earned my Bachelor of Science in Computer Science
+              from Cavite State University &ndash; Bacoor Campus on September 17, 2026.
             </p>
 
             <p
               className="text-base md:text-lg leading-relaxed font-light transition-colors duration-700"
               style={{ color: "var(--t-text-muted)" }}
             >
-              I combine creativity and logic to build cross-platform mobile
-              apps and responsive web applications end to end. My technical
-              foundation spans
+              I build responsive web applications and cross-platform mobile apps with
               <strong
                 className="font-medium"
                 style={{ color: "var(--t-text)" }}
               >
                 {" "}
-                React Native, Expo, and TypeScript on mobile, React.js on the
-                web, and backend services with Supabase
+                React, React Native, Expo, and TypeScript
               </strong>
-              , supported by hands-on experience in PC maintenance, assembly,
-              and troubleshooting. I enjoy solving problems across the full
-              stack, from software development to hardware expertise.
+              , supported by backend experience with Supabase, PostgreSQL, authentication,
+              real-time data, and REST API integration. I have also developed and deployed
+              client websites and gained hands-on experience with troubleshooting, hardware,
+              and basic networking. I care about clear problem-solving, maintainable code,
+              testing, continuous learning, and collaborating well with a team.
             </p>
 
             {/* Featured Project Card */}
@@ -166,32 +163,30 @@ export default function AboutMe() {
                   className="text-base leading-relaxed font-light transition-colors duration-700"
                   style={{ color: "var(--t-text-muted)" }}
                 >
-                  A major highlight of my academic career is my thesis project,{" "}
+                  My undergraduate thesis project,{" "}
                   <strong
                     className="font-medium"
                     style={{ color: "var(--t-text)" }}
                   >
                     {FEATURED_PROJECT.title}
                   </strong>
-                  , an App-Based AI-Assisted Geolocation and Automated Response
-                  System for Community-Based Animal Rescue. I served as the{" "}
+                  , is an AI-assisted geolocation and response system for community-based
+                  animal rescue. In our four-person team, I led development of the{" "}
                   <strong
                     className="font-medium"
                     style={{ color: "var(--t-text)" }}
                   >
-                    Lead Developer
+                    React Native mobile application
                   </strong>{" "}
-                  for the mobile application, which I built from the ground up
-                  using{" "}
+                  {" "}and personally implemented key reporting, geolocation, volunteer-dispatch,
+                  real-time update, and backend-integration flows using{" "}
                   <strong
                     className="font-medium"
                     style={{ color: "var(--t-text)" }}
                   >
                     Expo, React Native, and TypeScript
                   </strong>
-                  . This project showcases my ability to leverage cutting-edge
-                  frameworks to solve real-world problems while managing the
-                  complexities of mobile architecture and geolocation services.
+                  . The full project was a team effort, including the supporting admin and research work.
                 </p>
 
                 {/* Tech tags */}

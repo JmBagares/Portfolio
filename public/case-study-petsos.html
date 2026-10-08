@@ -203,8 +203,10 @@
         <span class="tag">Expo</span>
         <span class="tag">TypeScript</span>
         <span class="tag">Supabase</span>
+        <span class="tag">PostgreSQL</span>
         <span class="tag">Roboflow (AI)</span>
-        <span class="tag">OpenStreetMap</span>
+        <span class="tag">OpenRouter</span>
+        <span class="tag">Geoapify / Mapping</span>
         <span class="tag">Geolocation</span>
       </div>
     </header>
@@ -217,49 +219,65 @@
     </div>
 
     <section class="block">
-      <h2>Overview</h2>
+      <h2>1. Project Overview</h2>
       <p>Undergraduate thesis (BS Computer Science, Cavite State University - Bacoor City Campus) built for the Dasmariñas City Veterinary Office. Our four-person team designed the platform end to end, and I served as Lead Developer of the React Native mobile application.</p>
     </section>
 
     <section class="block">
-      <h2>The Problem</h2>
+      <h2>2. Problem and Objectives</h2>
       <p>Dasmariñas City handled animal-incident reports through manual, fragmented channels such as 911 hotlines and barangay calls that lacked precise location data and clear hand-offs between citizens, volunteers, and the City Veterinary Office. With an estimated 12 million strays nationwide and rapid local urbanization, this meant delayed responses, miscommunication, and no way to triage the most urgent cases.</p>
     </section>
 
     <section class="block">
-      <h2>My Role</h2>
-      <p>I led the mobile application and built it from the ground up with Expo, React Native, and TypeScript. I implemented geotagged incident reporting, the volunteer dispatch and live-tracking flows, camera-based rescue proof, and the integration between the app, the Supabase backend, and the AI prioritization service.</p>
+      <h2>3. My Role and Contributions</h2>
+      <p>I led development of the mobile application within our four-person thesis team. I implemented the React Native and Expo app, including geotagged incident reporting, volunteer dispatch and live-tracking flows, camera-based rescue proof, authentication, real-time data updates, and the integrations between the app, Supabase, mapping services, and AI-assisted prioritization. The complete thesis, supporting admin work, research, and evaluation were team efforts.</p>
     </section>
 
     <section class="block">
-      <h2>Approach</h2>
-      <p>We followed Agile Scrum across eight sprints, validating each increment with the City Veterinary Office. A field interview with the CVO directly shaped the build. Based on that feedback we added a dedicated animal-abuse reporting flow and an endorsement-based volunteer vetting step to filter out fake rescuers.</p>
+      <h2>4. Technology Stack</h2>
+      <ul>
+        <li><strong>Mobile:</strong> React Native, Expo, and TypeScript</li>
+        <li><strong>Backend:</strong> Supabase, PostgreSQL, authentication, storage, and real-time updates</li>
+        <li><strong>Integrations:</strong> Roboflow, OpenRouter, Geoapify and mapping services, geolocation, and push notifications</li>
+      </ul>
     </section>
 
     <section class="block">
-      <h2>What I Built</h2>
+      <h2>5. Key Features</h2>
       <ul>
         <li>One-tap geotagged incident reports with photo evidence and automatic location capture</li>
         <li>AI-assisted prioritization (Roboflow) that flags severe versus moderate cases from the submitted photo and description</li>
         <li>Volunteer dispatch with live location sharing and turn-by-turn navigation to the incident</li>
         <li>Camera-captured rescue proof and real-time status updates across user, volunteer, and admin sides</li>
+        <li>Authentication and push notifications supporting role-aware rescue workflows</li>
         <li>Rescue hub for lost and found pets, and a community forum for updates and discussion</li>
       </ul>
     </section>
 
     <section class="block">
-      <h2>Tech Decisions</h2>
+      <h2>6. Technical Implementation</h2>
       <ul>
         <li><strong>React Native + Expo + TypeScript:</strong> one codebase, fast on-device testing, and type safety on a team build</li>
         <li><strong>Supabase (PostgreSQL, Auth, Storage, Row-Level Security):</strong> real-time sync and role-based access without standing up custom infrastructure</li>
         <li><strong>Roboflow:</strong> image-based severity classification from user-submitted photos</li>
-        <li><strong>OpenStreetMap and Leaflet:</strong> precise, no-cost geolocation, routing, and risk heat maps</li>
+        <li><strong>Geoapify and mapping services:</strong> geolocation, routing, and location-aware rescue flows</li>
+        <li><strong>OpenRouter:</strong> language-model access used as part of the AI-assisted incident workflow</li>
       </ul>
     </section>
 
     <section class="block">
-      <h2>Results</h2>
+      <h2>7. Challenges and Solutions</h2>
+      <p>We followed Agile Scrum across eight sprints and used feedback from the City Veterinary Office to refine the workflow. The field interview exposed the need for clearer abuse reporting and safer volunteer participation, so the team added a dedicated animal-abuse flow and endorsement-based volunteer vetting.</p>
+    </section>
+
+    <section class="block">
+      <h2>8. Testing and Results</h2>
       <p>Evaluated by 50 respondents (IT professionals, pet owners, and rescue volunteers) against the ISO 25010 quality model, PetSOS scored an overall 4.64 / 5, verbally interpreted as "Excellent," with Functional Suitability highest at 4.88. In the user survey, 40% of residents named accurate geolocation the single most important feature.</p>
+    </section>
+
+    <section class="block">
+      <h2>9. What I Learned</h2>
+      <p>PetSOS strengthened my experience with coordinating a typed cross-platform application, real-time backend state, location-aware workflows, and multiple third-party services inside a team project. It also reinforced the importance of validating feature decisions with the people who will use the system.</p>
     </section>
 
     <footer>

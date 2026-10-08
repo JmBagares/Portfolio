@@ -29,12 +29,13 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen">
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <Preloader />
         <CustomCursor />
         <Navbar />
         <InfoGuide />
 
-        <main className="portfolio-shell relative">
+        <main id="main-content" className="portfolio-shell relative">
           <Hero />
           <AboutMe />
           <SelectedWorks />

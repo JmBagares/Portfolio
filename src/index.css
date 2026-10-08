@@ -42,6 +42,25 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: var(--t-btn-bg);
+  color: var(--t-btn-text);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 body {
@@ -164,9 +183,17 @@ h4 {
 
 .magnetic-btn:focus-visible,
 .record-player__button:focus-visible,
-.theme-link-muted:focus-visible {
+.theme-link-muted:focus-visible,
+button:focus-visible,
+a:focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--t-accent) 24%, transparent), var(--t-btn-shadow);
+}
+
+.hero-availability {
+  max-width: 52rem;
+  line-height: 1.6;
+  text-wrap: balance;
 }
 
 .selected-works__card {
