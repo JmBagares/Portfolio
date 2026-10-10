@@ -64,10 +64,10 @@ const projects = [
     title: 'Lunan',
     category: 'Mobile App',
     group: 'Mobile',
-    role: 'Solo Developer · Cross-Platform Mobile App',
-    description: 'A cross-platform React Native (Expo) travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map. Features offline local storage, reverse geocoding, photo galleries, categories & ratings, light/dark theming, and JSON backups.',
+    role: 'Solo Developer · Android Travel-Diary App',
+    description: 'A React Native and Expo travel diary for Android, with saved places, photos, notes, categories, ratings, and JSON backups stored on-device. Saved diary data remains available offline; map tiles and reverse geocoding require an internet connection.',
     tags: ['React Native', 'Expo SDK 56', 'React Navigation', 'Leaflet / OpenStreetMap', 'AsyncStorage', 'expo-location', 'expo-image-picker'],
-    highlights: ['Offline-first local data with AsyncStorage', 'Interactive maps and reverse geocoding', 'Photo galleries, categories, ratings, and JSON backups'],
+    highlights: ['Saved diary data available offline with AsyncStorage', 'Interactive maps and reverse geocoding when online', 'Photo galleries, categories, ratings, and JSON backups'],
     status: 'Mobile App',
     color: '#8ACBD0',
     image: lunanPreviewOne,
@@ -152,11 +152,11 @@ const projects = [
     title: 'WordPress Business & Pet Shop Sites',
     category: 'WordPress / Elementor',
     group: 'Web',
-    role: 'IT Intern · Two Live Company Websites',
+    role: 'IT Intern · Two Deployed Company Websites',
     description: 'Built and deployed responsive WordPress websites for Magnaval Services and Warduz Petshop during my IT internship, using cPanel and custom domain configuration to publish the sites and refining their content for desktop and mobile visitors.',
     tags: ['WordPress', 'Elementor', 'Responsive Design', 'Theme Customization'],
     highlights: ['WordPress page building and theme customization', 'Responsive service and product presentation', 'cPanel deployment and custom domain configuration'],
-    status: 'Live Websites',
+    status: 'Internship Work',
     color: '#D4AF37',
     previews: [
       { src: magnavalPreview, alt: 'Magnaval Services website preview' },
@@ -166,6 +166,7 @@ const projects = [
       { src: magnavalPreview, alt: 'Magnaval Services website preview' },
       { src: warduzPreview, alt: 'Warduz Pet Shop website preview' },
     ],
+    caseStudyUrl: '/case-study-company-websites.html',
     links: [
       { label: 'Magnaval Services', href: 'https://magnavalservices.com' },
       { label: 'Warduz Pet Shop', href: 'https://warduzpetshop.com' },
@@ -235,7 +236,7 @@ const projects = [
   },
 ]
 
-const PROJECT_PRIORITY = [6, 1, 3, 8, 7, 2, 4, 5]
+const PROJECT_PRIORITY = [6, 3, 2, 1, 8, 7, 4, 5]
 const orderedProjects = [...projects].sort(
   (projectA, projectB) => PROJECT_PRIORITY.indexOf(projectA.id) - PROJECT_PRIORITY.indexOf(projectB.id),
 )
@@ -251,7 +252,7 @@ function getCardDescription(description, maxLength = 150) {
     ? trimmedDescription.slice(0, lastWordBoundary)
     : trimmedDescription
 
-  return `${safeDescription}.....`
+  return `${safeDescription}…`
 }
 
 function ProjectCard({ project, index, onOpenProject }) {
@@ -926,6 +927,9 @@ export default function SelectedWorks() {
           <h2 className="selected-works-section__title text-4xl md:text-6xl lg:text-7xl transition-colors duration-700" style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--text-primary)' }}>
             Selected Works
           </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+            React interfaces, deployed company websites, and a mobile app developed with a four-person thesis team.
+          </p>
         </motion.div>
 
         <motion.div

@@ -13,8 +13,13 @@ const experience = [
     points: [
       'Built and deployed two company websites for Magnaval Services and Warduz Petshop using WordPress, cPanel, and custom domain configuration.',
       'Improved responsive page layouts and organized service and product content for clear browsing across screen sizes.',
-      'Performed hardware and software troubleshooting and assisted with networking, CCTV, and biometric access installations.',
       'Supported client requests and prepared technical documentation.',
+      'Performed hardware and software troubleshooting and assisted with networking, CCTV, and biometric access installations.',
+    ],
+    links: [
+      { label: 'Website Case Study', href: '/case-study-company-websites.html', external: false },
+      { label: 'Magnaval Services', href: 'https://magnavalservices.com', external: true },
+      { label: 'Warduz Petshop', href: 'https://warduzpetshop.com', external: true },
     ],
   },
 ]
@@ -97,6 +102,15 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3" aria-label="Internship project links">
+                    {item.links.map((link) => (
+                      <a key={link.href} href={link.href} className="theme-link-muted text-sm font-medium underline underline-offset-4"
+                        target={link.external ? '_blank' : undefined}
+                        rel={link.external ? 'noopener noreferrer' : undefined}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}

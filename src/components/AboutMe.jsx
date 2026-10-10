@@ -104,7 +104,7 @@ export default function AboutMe() {
               className="text-lg md:text-xl leading-relaxed font-light transition-colors duration-700"
               style={{ color: "var(--t-text)" }}
             >
-              I&apos;m a <strong className="font-semibold">Computer Science graduate and junior full-stack developer</strong>{" "}
+              I&apos;m a <strong className="font-semibold">Computer Science graduate and junior frontend developer</strong>{" "}
               based in Las Pi&ntilde;as City, Metro Manila. I earned my Bachelor of Science in Computer Science
               from Cavite State University &ndash; Bacoor Campus on September 17, 2026.
             </p>
@@ -113,19 +113,17 @@ export default function AboutMe() {
               className="text-base md:text-lg leading-relaxed font-light transition-colors duration-700"
               style={{ color: "var(--t-text-muted)" }}
             >
-              I build responsive web applications and cross-platform mobile apps with
+              My web development work focuses on
               <strong
                 className="font-medium"
                 style={{ color: "var(--t-text)" }}
               >
                 {" "}
-                React, React Native, Expo, and TypeScript
+                React, TypeScript, responsive layouts, and REST API integration
               </strong>
-              , supported by backend experience with Supabase, PostgreSQL, authentication,
-              real-time data, and REST API integration. I have also developed and deployed
-              client websites and gained hands-on experience with troubleshooting, hardware,
-              and basic networking. I care about clear problem-solving, maintainable code,
-              testing, continuous learning, and collaborating well with a team.
+              . I built and deployed two company websites during my internship and coordinated
+              API behavior with backend developers on a university enrollment project. I also
+              work with React Native, Expo, and Supabase through my mobile projects.
             </p>
 
             {/* Featured Project Card */}

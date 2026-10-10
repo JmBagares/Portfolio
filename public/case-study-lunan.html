@@ -196,8 +196,8 @@
     <header>
       <span class="eyebrow">Case Study</span>
       <h1>Lunan</h1>
-      <p class="subtitle">A cross-platform travel-diary app for pinning, photographing, and revisiting your favorite places on an interactive map.</p>
-      <p class="meta">Solo Developer&nbsp;&nbsp;·&nbsp;&nbsp;Cross-Platform Mobile App&nbsp;&nbsp;·&nbsp;&nbsp;iOS &amp; Android</p>
+      <p class="subtitle">An Android travel diary with on-device notes and photos, interactive maps, and JSON backups.</p>
+      <p class="meta">Solo Developer&nbsp;&nbsp;·&nbsp;&nbsp;React Native / Expo&nbsp;&nbsp;·&nbsp;&nbsp;Android</p>
       <div class="tags">
         <span class="tag">React Native</span>
         <span class="tag">Expo SDK 56</span>
@@ -207,23 +207,24 @@
         <span class="tag">expo-location</span>
         <span class="tag">expo-image-picker</span>
       </div>
+      <div class="tags" aria-label="Project links"><a class="btn btn-primary" href="https://github.com/JmBagares/Lunan" target="_blank" rel="noopener noreferrer">View Source Code</a></div>
     </header>
 
     <div class="metrics">
-      <div class="metric"><span class="metric-value">Offline-first</span><span class="metric-label">Works with no connection</span></div>
-      <div class="metric"><span class="metric-value">1 codebase</span><span class="metric-label">iOS &amp; Android from Expo</span></div>
+      <div class="metric"><span class="metric-value">Offline data</span><span class="metric-label">Saved diary entries on-device</span></div>
+      <div class="metric"><span class="metric-value">Android</span><span class="metric-label">React Native / Expo app</span></div>
       <div class="metric"><span class="metric-value">On-device</span><span class="metric-label">Local storage, no account</span></div>
       <div class="metric"><span class="metric-value">Map-based</span><span class="metric-label">Interactive OpenStreetMap</span></div>
     </div>
 
     <section class="block">
       <h2>1. Project Overview</h2>
-      <p>Lunan is a self-directed cross-platform mobile app for keeping a private travel diary. You drop pins on an interactive map, attach photos, notes, categories, and ratings, and come back to revisit the places that mattered &mdash; all stored on your device, with no account required.</p>
+      <p>Lunan is a self-directed Android app for keeping a private travel diary. You drop pins on an interactive map, attach photos, notes, categories, and ratings, and revisit saved entries &mdash; all stored on your device, with no account required.</p>
     </section>
 
     <section class="block">
       <h2>2. Problem and Objectives</h2>
-      <p>I wanted a travel journal that respected privacy and worked anywhere, including places with no signal. That meant an offline-first design: everything lives on the device, nothing depends on a login or a server, and the map, photos, and notes all stay usable on the road.</p>
+      <p>I wanted a travel journal that retained personal memories on the device without requiring an account. Saved diary entries, notes, and attached photos remain available offline. Loading map tiles and resolving coordinates to place names require an internet connection.</p>
     </section>
 
     <section class="block">
@@ -242,7 +243,7 @@
         <li><strong>Map-based pinning:</strong> drop and revisit places on an interactive map with photos and notes attached to each spot</li>
         <li><strong>Reverse geocoding:</strong> automatically names locations from their coordinates</li>
         <li><strong>Galleries, categories &amp; ratings:</strong> organize memories with photo galleries, custom categories, and star ratings</li>
-        <li><strong>Offline local storage:</strong> AsyncStorage keeps everything on-device, so the app works with no connection and no account</li>
+        <li><strong>Offline diary data:</strong> AsyncStorage keeps saved entries on-device without an account; map tiles and reverse geocoding need a connection</li>
         <li><strong>Theming &amp; backups:</strong> light and dark themes plus JSON export and import to back up or move your data</li>
       </ul>
     </section>
@@ -250,7 +251,7 @@
     <section class="block">
       <h2>6. Technical Implementation</h2>
       <ul>
-        <li><strong>React Native + Expo SDK 56:</strong> one codebase targeting both iOS and Android, with fast on-device testing</li>
+        <li><strong>React Native + Expo SDK 56:</strong> an Android application using Expo and native device APIs</li>
         <li><strong>Leaflet / OpenStreetMap:</strong> flexible, no-cost mapping and geolocation without proprietary API keys</li>
         <li><strong>AsyncStorage:</strong> an offline-first persistence layer that keeps data private and available without a network</li>
         <li><strong>expo-location &amp; expo-image-picker:</strong> native geolocation and camera / gallery access for capturing places on the go</li>

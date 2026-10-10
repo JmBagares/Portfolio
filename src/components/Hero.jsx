@@ -5,7 +5,7 @@ import MagneticButton from './MagneticButton'
 import ErrorBoundary from './ErrorBoundary'
 import { useTheme } from '../theme/ThemeContext'
 import { trackEvent } from '../utils/analytics'
-import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
+import cvFile from '../assets/Jan Manuel Bagares Web Developer Resume.pdf'
 
 const GridScan = lazy(() => import('./GridScan'))
 const Dither = lazy(() => import('./Dither'))
@@ -135,7 +135,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-subtitle" variants={heroItemVariants}>
-            Junior Full-Stack Developer | React &amp; TypeScript
+            Junior Frontend Developer | React &amp; TypeScript
           </motion.p>
 
           <motion.p
@@ -152,14 +152,8 @@ export default function Hero() {
           >
             Las Pi&ntilde;as City, Metro Manila, Philippines
             <span className="block mt-2 normal-case tracking-[0.04em]">
-              Open to remote, hybrid, on-site, part-time, freelance, and full-time opportunities
+              Available for full-time, part-time, and freelance work · Remote, hybrid, or on-site
             </span>
-          </motion.p>
-
-          <motion.p className="hero-description" variants={heroItemVariants}>
-            I&apos;m a Computer Science graduate passionate about building responsive web applications,
-            cross-platform mobile apps, and reliable backend solutions. I enjoy transforming ideas into
-            functional products and continuously improving my development skills.
           </motion.p>
 
           <motion.div className="hero-stats" variants={heroItemVariants}>
@@ -174,8 +168,8 @@ export default function Hero() {
             </span>
             <span className="hero-stat__divider" aria-hidden="true" />
             <span className="hero-stat">
-              <span className="hero-stat__number">Open</span>
-              <span className="hero-stat__label">Flexible Setup</span>
+              <span className="hero-stat__number">2</span>
+              <span className="hero-stat__label">Company Websites</span>
             </span>
           </motion.div>
 
@@ -186,8 +180,8 @@ export default function Hero() {
               </MagneticButton>
               <MagneticButton
                 href={cvFile}
-                download="Jan Manuel Bagares CV.pdf"
-                aria-label="Download Jan Manuel Bagares resume"
+                download="Jan Manuel Bagares - Frontend Developer Resume.pdf"
+                aria-label="Download Jan Manuel Bagares frontend developer resume"
                 onClick={() => trackEvent('cv_download', { location: 'hero' })}
               >
                 Download Resume
@@ -197,22 +191,25 @@ export default function Hero() {
               </MagneticButton>
             </div>
           </motion.div>
+          <motion.div className="hero-profile-links" variants={heroItemVariants} aria-label="Professional profiles and email">
+            <a href="https://github.com/JmBagares" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/jan-manuel-bagares-977760337/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:jmbagares52@gmail.com">Email</a>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.button
+        type="button"
         className="hero-scroll-indicator"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        role="button"
-        tabIndex={0}
-        aria-label="Scroll down to explore more content"
-        onKeyDown={(e) => e.key === 'Enter' && document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        onClick={scrollToWorks}
+        aria-label="Scroll to selected projects"
       >
-        <span className="hero-scroll-indicator__text">Scroll to explore</span>
+        <span className="hero-scroll-indicator__text">Explore my projects</span>
         <svg
           className="hero-scroll-indicator__arrow"
           width="20"
@@ -229,7 +226,7 @@ export default function Hero() {
             strokeLinejoin="round"
           />
         </svg>
-      </motion.div>
+      </motion.button>
     </section>
   )
 }

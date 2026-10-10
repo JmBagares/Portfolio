@@ -1,7 +1,7 @@
 {
   "name": "Jan Manuel Bagares Portfolio",
   "short_name": "JM Bagares",
-  "description": "Portfolio of Jan Manuel Bagares, a Junior Full-Stack Developer specializing in React and TypeScript.",
+  "description": "Portfolio of Jan Manuel Bagares, a junior frontend developer working with React and TypeScript.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

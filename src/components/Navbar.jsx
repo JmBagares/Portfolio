@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { trackEvent } from '../utils/analytics'
-import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
+import cvFile from '../assets/Jan Manuel Bagares Web Developer Resume.pdf'
 
 const navLinks = [
-  { label: 'About', href: '#about', sectionId: 'about' },
-  { label: 'Works', href: '#selected-works', sectionId: 'selected-works' },
-  { label: 'Music', href: '#music', sectionId: 'music' },
-  { label: 'Skills', href: '#skills', sectionId: 'skills' },
+  { label: 'Projects', href: '#selected-works', sectionId: 'selected-works' },
   { label: 'Experience', href: '#experience', sectionId: 'experience' },
+  { label: 'Skills', href: '#skills', sectionId: 'skills' },
+  { label: 'About', href: '#about', sectionId: 'about' },
   { label: 'Education', href: '#education', sectionId: 'education' },
+  { label: 'Music', href: '#music', sectionId: 'music' },
   { label: 'Contact', href: '#contact', sectionId: 'contact' },
 ]
 
@@ -48,6 +48,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
+      aria-label="Main navigation"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -65,7 +66,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -84,7 +85,7 @@ export default function Navbar() {
           ))}
           <a
             href={cvFile}
-            download="Jan Manuel Bagares CV.pdf"
+            download="Jan Manuel Bagares - Frontend Developer Resume.pdf"
             onClick={() => trackEvent('cv_download', { location: 'navbar' })}
             className="theme-link-muted text-sm font-medium tracking-wide no-underline"
           >
@@ -106,7 +107,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden flex flex-col gap-1.5 bg-transparent border-none p-2"
+          className="lg:hidden flex flex-col gap-1.5 bg-transparent border-none p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={mobileOpen}
@@ -139,7 +140,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden backdrop-blur-xl"
+            className="lg:hidden overflow-hidden backdrop-blur-xl"
             style={{ backgroundColor: 'var(--t-nav-bg)' }}
           >
             <div className="px-6 py-6 flex flex-col gap-4">
@@ -156,7 +157,7 @@ export default function Navbar() {
               ))}
               <a
                 href={cvFile}
-                download="Jan Manuel Bagares CV.pdf"
+                download="Jan Manuel Bagares - Frontend Developer Resume.pdf"
                 onClick={() => {
                   trackEvent('cv_download', { location: 'mobile-menu' })
                   setMobileOpen(false)

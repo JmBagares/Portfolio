@@ -12,11 +12,10 @@ import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
 import ErrorBoundary from './components/ErrorBoundary'
 import InfoGuide from './components/InfoGuide'
-import Preloader from './components/Preloader'
 import { initializeAnalytics, initScrollDepthTracking } from './utils/analytics'
 
 // The turntable pulls in react-dnd + the vinyl player, so it's split out of the
-// initial bundle and loaded once the user scrolls toward it.
+// initial bundle.
 const TurntableSection = lazy(() => import('./components/TurntableSection'))
 
 export default function App() {
@@ -30,15 +29,17 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen">
         <a className="skip-link" href="#main-content">Skip to main content</a>
-        <Preloader />
         <CustomCursor />
         <Navbar />
         <InfoGuide />
 
         <main id="main-content" className="portfolio-shell relative">
           <Hero />
-          <AboutMe />
           <SelectedWorks />
+          <Experience />
+          <Skills />
+          <AboutMe />
+          <Education />
 
           <ErrorBoundary>
             <Suspense fallback={<div style={{ minHeight: '60vh' }} aria-hidden="true" />}>
@@ -46,9 +47,6 @@ export default function App() {
             </Suspense>
           </ErrorBoundary>
 
-          <Skills />
-          <Experience />
-          <Education />
           <Contact />
         </main>
         <Analytics />

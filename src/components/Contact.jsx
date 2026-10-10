@@ -56,11 +56,12 @@ export default function Contact() {
               color: 'var(--t-accent)',
               border: '1px solid color-mix(in srgb, var(--t-accent) 26%, transparent)',
             }}>
-            ● Open to junior software development opportunities
+            ● Open to junior frontend and web development roles
           </span>
           <p className="text-lg md:text-xl max-w-xl mx-auto mb-14 font-light transition-colors duration-700"
             style={{ color: 'var(--text-muted)' }}>
-            Open to junior software development opportunities, including remote, hybrid, on-site, full-time, part-time, and freelance roles.
+            Based in Las Pi&ntilde;as City, Metro Manila. Available for full-time, part-time, and freelance work,
+            with remote, hybrid, or on-site arrangements.
           </p>
         </motion.div>
 

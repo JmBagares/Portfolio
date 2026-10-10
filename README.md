@@ -1,6 +1,6 @@
 # Portfolio
 
-An interactive personal portfolio built with React and Vite. It showcases selected projects, skills, education, and contact information through a music-inspired interface with animated backgrounds, theme changes, a custom cursor, and a draggable vinyl player.
+A personal portfolio built with React and Vite for junior frontend and web development applications. It opens directly to the developer introduction, followed by React projects, deployed company websites, internship experience, and skills. A music-inspired turntable and theme experience appears after the professional sections.
 
 ## Features
 
@@ -82,12 +82,44 @@ src/
 ## Main Sections
 
 - `Hero` - landing section with animated background visuals
-- `AboutMe` - personal introduction and featured information
 - `SelectedWorks` - project showcase with previews and links
-- `TurntableSection` - interactive vinyl player and theme/audio experience
+- `Experience` - internship contributions and company website links
 - `Skills` - development, design, and hardware skill highlights
+- `AboutMe` - short background and mobile thesis contribution
 - `Education` - academic background
+- `TurntableSection` - optional interactive vinyl player and theme/audio experience
 - `Contact` - contact call-to-action
+
+## Resume
+
+The hero and navigation download a separate one-page frontend developer resume with clickable profile, project, and source-code links. The original `src/assets/Jan Manuel Bagares CV.pdf` is retained.
+
+To update the new resume, edit the verified content in `scripts/build_resume.py`, then run:
+
+```bash
+python -m pip install reportlab
+python scripts/build_resume.py
+```
+
+The script writes a downloadable copy under `output/pdf/` and the PDF asset imported by the portfolio under `src/assets/`. Render and inspect the PDF after changing its content, and keep it to one readable page.
+
+## Quality Checks
+
+GitHub Actions runs the existing lint and production build commands on pushes and pull requests. Run both locally before publishing changes:
+
+```bash
+npm run lint
+npm run build
+```
+
+Project claims should describe completed work and distinguish individual contributions from team work. Lunan stores saved diary data locally; map tiles and reverse geocoding require a connection.
+
+## Evidence Still to Add
+
+- Record short walkthrough videos for PetSOS, Lunan, and SignSense using the actual applications.
+- Publish a reviewable enrollment-system demo using synthetic data, or label a demonstration mode if the team backend is unavailable.
+- Document actual test results, technical decisions, and measured limitations in the project repositories.
+- Add a supervisor testimonial only after receiving permission to publish it.
 
 ## Deployment
 

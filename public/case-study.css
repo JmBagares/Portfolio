@@ -30,6 +30,10 @@ h1 { margin: 12px 0; font-family: "DM Serif Display", Georgia, serif; font-size:
 .subtitle { max-width: 58ch; margin: 0 0 18px; font-size: clamp(1rem, 2.6vw, 1.2rem); font-weight: 500; }
 .meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.review-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.project-figure { margin: 28px 0; }
+.project-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.project-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 0.9rem; }
 .tag { padding: 6px 13px; border: 1px solid var(--line); border-radius: 999px; background: rgba(86,182,198,0.1); color: var(--accent); font-size: 0.75rem; font-weight: 700; }
 .metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 36px 0; }
 .metric { padding: 20px 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 10px 26px rgba(26,37,48,0.06); text-align: center; }
