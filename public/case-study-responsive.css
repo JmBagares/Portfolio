@@ -1,0 +1,64 @@
+/* Shared responsive sizing for every case study. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  --page-gutter: clamp(1rem, 3vw, 1.5rem);
+  min-width: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: max(var(--page-gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--page-gutter), env(safe-area-inset-right, 0px));
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  overflow-wrap: anywhere;
+}
+
+.wrap,
+.metrics > * {
+  min-width: 0;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.tag,
+.btn {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.btn,
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.btn {
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-links,
+  footer {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

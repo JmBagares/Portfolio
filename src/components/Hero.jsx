@@ -135,7 +135,9 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="hero-subtitle" variants={heroItemVariants}>
-            Junior Frontend Developer | React &amp; TypeScript
+            <span>Junior Frontend Developer</span>
+            <span className="hero-subtitle__separator" aria-hidden="true">|</span>
+            <span>React &amp; TypeScript</span>
           </motion.p>
 
           <motion.p
@@ -174,7 +176,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div className="hero-cta-wrap" variants={heroItemVariants}>
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="hero-actions flex flex-wrap items-center justify-center gap-4">
               <MagneticButton onClick={scrollToWorks}>
                 View Projects
               </MagneticButton>

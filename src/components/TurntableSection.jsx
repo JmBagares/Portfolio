@@ -51,7 +51,7 @@ export default function TurntableSection() {
     <section id="music" className="music-section py-24 md:py-32">
       <div className="music-section__glow" aria-hidden="true" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="section-container max-w-7xl mx-auto px-6 relative z-10">
         <div className="music-section__intro music-section__intro--compact mb-8 md:mb-10">
           <span className="theme-label text-3xl md:text-5xl font-semibold uppercase tracking-[0.16em] block">Music</span>
           <p className="m-0 text-sm md:text-base leading-7" style={{ color: 'var(--text-muted)' }}>

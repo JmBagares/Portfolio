@@ -37,7 +37,7 @@ export default function Contact() {
       </div>
       <StreetArtLayer sectionId="contact" />
 
-      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+      <div className="section-container max-w-5xl mx-auto px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -84,7 +84,7 @@ export default function Contact() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="glass-card rounded-[24px] p-6 md:p-8 text-left flex flex-col gap-5" noValidate>
+            <form onSubmit={handleSubmit} className="contact-form glass-card rounded-[24px] p-6 md:p-8 text-left flex flex-col gap-5" noValidate>
               {/* Honeypot: hidden from real users; bots that fill it get filtered by Formspree */}
               <input
                 type="text"
@@ -168,7 +168,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={state.submitting}
-                className="self-center mt-2 inline-flex items-center gap-3 px-10 py-4 text-base md:text-lg font-semibold no-underline transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                className="contact-submit self-center mt-2 inline-flex items-center justify-center gap-3 px-10 py-4 text-base md:text-lg font-semibold no-underline transition-transform duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 style={{
                   background: 'var(--t-btn-bg)',
                   color: 'var(--t-btn-text)',

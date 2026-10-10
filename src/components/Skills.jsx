@@ -108,15 +108,15 @@ function SkillPill({ skill, index }) {
         scale: { delay: index * 0.05, duration: 0.5 },
       }}
       whileHover={{ scale: 1.1, boxShadow: `0 8px 30px ${skillTone}40` }}
-      className="inline-flex items-center px-6 py-3 rounded-full font-medium text-sm select-none"
+      className="skill-pill inline-flex items-center px-6 py-3 rounded-full font-medium text-sm select-none"
       style={{
         backgroundColor: `color-mix(in srgb, var(--skill-bg) 86%, ${skillTone} 14%)`,
         color: 'var(--skill-text)',
         border: `1.5px solid color-mix(in srgb, var(--skill-border) 74%, ${skillTone} 26%)`,
       }}
     >
-      <span className="w-2 h-2 rounded-full mr-3" style={{ backgroundColor: skillTone }} />
-      {skill.name}
+      <span className="w-2 h-2 shrink-0 rounded-full mr-3" style={{ backgroundColor: skillTone }} />
+      <span>{skill.name}</span>
     </motion.div>
   )
 }
@@ -138,7 +138,7 @@ export default function Skills() {
       >
         <StreetArtLayer sectionId="skills" />
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="section-container max-w-6xl mx-auto px-6 relative z-10">
           <motion.div
             className="mb-16 text-center"
             initial={{ opacity: 0, y: 40 }}
@@ -213,7 +213,7 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 md:py-36 relative overflow-hidden" ref={sectionRef}>
       <StreetArtLayer sectionId="skills" />
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="section-container max-w-5xl mx-auto px-6 relative z-10">
         <motion.div className="mb-16 text-center"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -222,7 +222,7 @@ export default function Skills() {
           <span className="theme-label text-sm font-semibold uppercase tracking-[0.3em] block mb-4">
             Expertise
           </span>
-          <h2 className="text-4xl md:text-6xl transition-colors duration-700" style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--text-primary)' }}>
+          <h2 className="skills-section__title text-4xl md:text-6xl transition-colors duration-700" style={{ fontFamily: 'var(--t-heading-font)', color: 'var(--text-primary)' }}>
             Skills & Tools
           </h2>
         </motion.div>

@@ -354,7 +354,7 @@ function ProjectCard({ project, index, onOpenProject }) {
         onClick={handleCardClick}
       >
         <div
-          className={`relative overflow-hidden rounded-t-[24px] transition-[height] duration-500 ease-out ${hasPhonePreview && isPhonePreviewOpen ? 'h-168 sm:h-156 md:h-156 lg:h-160' : 'h-60 md:h-65'}`}
+          className={`selected-works__preview relative overflow-hidden rounded-t-[24px] ${hasPhonePreview && isPhonePreviewOpen ? 'selected-works__preview--phone' : ''}`}
         >
           {hasPhonePreview && isPhonePreviewOpen ? (
             <div
@@ -363,7 +363,7 @@ function ProjectCard({ project, index, onOpenProject }) {
                 background: `radial-gradient(circle at top, color-mix(in srgb, ${projectTone} 26%, transparent) 0%, transparent 48%), linear-gradient(180deg, color-mix(in srgb, var(--overlay-scrim) 82%, ${projectTone} 18%) 0%, color-mix(in srgb, var(--surface) 88%, ${projectTone} 12%) 100%)`,
               }}
             >
-              <div className="relative mt-2 w-48 max-w-full rounded-[2.6rem] border border-white/12 bg-black/85 p-2 shadow-[0_28px_60px_rgba(0,0,0,0.34)] sm:mt-0 sm:w-52 md:mt-2 md:w-55 lg:mt-3">
+              <div className="selected-works__phone relative mt-2 w-48 max-w-full rounded-[2.6rem] border border-white/12 bg-black/85 p-2 shadow-[0_28px_60px_rgba(0,0,0,0.34)] sm:mt-0 sm:w-52 md:mt-2 md:w-55 lg:mt-3">
                 <div className="pointer-events-none absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-black/90 shadow-[0_6px_16px_rgba(0,0,0,0.45)]" />
                 <div className="relative overflow-hidden rounded-[2rem] bg-black" style={{ aspectRatio: '9 / 19.5' }}>
                   <AnimatePresence mode="wait">
@@ -386,7 +386,7 @@ function ProjectCard({ project, index, onOpenProject }) {
               </div>
 
               <div className="flex w-full max-w-76 flex-col items-center gap-3" onClick={(event) => event.stopPropagation()}>
-                <div className="flex w-full items-center justify-between gap-3">
+                <div className="selected-works__phone-toolbar flex w-full items-center justify-between gap-3">
                   <p className="text-left text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: 'var(--label-text)' }}>
                     {project.title} App Screens
                   </p>
@@ -403,7 +403,7 @@ function ProjectCard({ project, index, onOpenProject }) {
                     Close Preview
                   </button>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="selected-works__phone-pagination">
                   <button
                     type="button"
                     className="rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5"
@@ -416,7 +416,7 @@ function ProjectCard({ project, index, onOpenProject }) {
                   >
                     Prev
                   </button>
-                  <span className="min-w-18 text-center text-xs font-medium" style={{ color: 'var(--card-muted)' }}>
+                  <span className="text-center text-xs font-medium" style={{ color: 'var(--card-muted)' }}>
                     {activePhoneSlideIndex + 1} / {project.phoneSlides.length}
                   </span>
                   <button
@@ -432,21 +432,23 @@ function ProjectCard({ project, index, onOpenProject }) {
                     Next
                   </button>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="flex flex-wrap items-center justify-center">
                   {project.phoneSlides.map((slide, slideIndex) => (
                     <button
                       key={slide.src}
                       type="button"
                       aria-label={`Go to ${project.title} screen ${slideIndex + 1}`}
-                      className="h-2.5 w-2.5 rounded-full transition-transform duration-300"
-                      style={{
+                      className="selected-works__phone-dot"
+                      aria-pressed={slideIndex === activePhoneSlideIndex}
+                      onClick={() => jumpToPhoneSlide(slideIndex)}
+                    >
+                      <span aria-hidden="true" style={{
                         backgroundColor: slideIndex === activePhoneSlideIndex
                           ? projectTone
                           : 'color-mix(in srgb, var(--badge-border) 74%, transparent)',
                         transform: slideIndex === activePhoneSlideIndex ? 'scale(1.15)' : 'scale(1)',
-                      }}
-                      onClick={() => jumpToPhoneSlide(slideIndex)}
-                    />
+                      }} />
+                    </button>
                   ))}
                 </div>
               </div>
@@ -543,7 +545,7 @@ function ProjectCard({ project, index, onOpenProject }) {
             </div>
           ) : null}
         </div>
-        <div className="p-6 flex flex-col gap-4 grow">
+        <div className="selected-works__copy p-6 flex flex-col gap-4 grow">
           <div className="flex flex-wrap items-center gap-2">
             <span
               className="text-[11px] font-semibold uppercase tracking-[0.2em] inline-flex items-center"
@@ -917,7 +919,7 @@ export default function SelectedWorks() {
   return (
     <section id="selected-works" className="selected-works-section py-24 md:py-36 relative overflow-hidden" ref={sectionRef}>
       <StreetArtLayer sectionId="selected-works" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="section-container max-w-7xl mx-auto px-6 relative z-10">
         <motion.div className="mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

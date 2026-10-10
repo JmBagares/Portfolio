@@ -6,7 +6,8 @@ export default function MagneticButton({ children, className = '', ...props }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const { href, target, rel, ...restProps } = props
 
-  const handleMouseMove = (e) => {
+  const handlePointerMove = (e) => {
+    if (e.pointerType !== 'mouse' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
     const rect = ref.current.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
@@ -21,8 +22,10 @@ export default function MagneticButton({ children, className = '', ...props }) {
 
   const sharedProps = {
     ref,
-    onMouseMove: handleMouseMove,
-    onMouseLeave: handleMouseLeave,
+    onPointerMove: handlePointerMove,
+    onPointerLeave: handleMouseLeave,
+    onPointerDown: handleMouseLeave,
+    onBlur: handleMouseLeave,
     animate: { x: offset.x, y: offset.y },
     transition: { type: 'spring', stiffness: 300, damping: 15, mass: 0.3 },
     className: `magnetic-btn relative inline-flex items-center justify-center overflow-hidden text-center no-underline font-sans font-semibold tracking-wide

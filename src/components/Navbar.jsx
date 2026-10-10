@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { trackEvent } from '../utils/analytics'
 import cvFile from '../assets/Jan Manuel Bagares Web Developer Resume.pdf'
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const menuButtonRef = useRef(null)
 
   const { scrollYProgress } = useScroll()
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
@@ -46,21 +47,43 @@ export default function Navbar() {
     }
   }, [updateActiveSection])
 
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const closeOnDesktop = (event) => {
+      if (event.matches) setMobileOpen(false)
+    }
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return undefined
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [mobileOpen])
+
   return (
     <motion.nav
       aria-label="Main navigation"
+      data-scrolled={scrolled}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`portfolio-nav fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'py-3 backdrop-blur-xl shadow-sm bg-(--t-nav-bg)'
           : 'py-6 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="nav-shell max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="font-semibold text-lg tracking-tight no-underline" style={{ color: 'var(--t-text)' }}>
+        <a href="#hero" onClick={() => setMobileOpen(false)} className="nav-logo font-semibold text-lg tracking-tight no-underline" style={{ color: 'var(--t-text)' }}>
           <span style={{ fontFamily: 'var(--t-heading-font)', fontSize: '1.5rem', transition: 'font-family 0.5s ease' }}>JM</span>
           <span style={{ color: 'var(--accent-ink)', transition: 'color 0.8s ease' }}>.</span>
         </a>
@@ -71,6 +94,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
+              aria-current={activeSection === link.sectionId ? 'location' : undefined}
               className={`theme-link-muted text-sm font-medium tracking-wide no-underline relative group ${activeSection === link.sectionId ? 'nav-link--active' : ''}`}
             >
               {link.label}
@@ -107,7 +131,9 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden flex flex-col gap-1.5 bg-transparent border-none p-2"
+          ref={menuButtonRef}
+          type="button"
+          className="nav-menu-toggle lg:hidden flex flex-col gap-1.5 bg-transparent border-none p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={mobileOpen}
@@ -140,14 +166,15 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden backdrop-blur-xl"
+            className="mobile-navigation lg:hidden backdrop-blur-xl"
             style={{ backgroundColor: 'var(--t-nav-bg)' }}
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
+            <div className="section-container px-6 py-6 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
+                  aria-current={activeSection === link.sectionId ? 'location' : undefined}
                   onClick={() => setMobileOpen(false)}
                   className="text-lg font-medium no-underline"
                   style={{ color: activeSection === link.sectionId ? 'var(--t-accent)' : 'var(--text-primary)' }}

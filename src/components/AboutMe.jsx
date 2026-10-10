@@ -29,7 +29,7 @@ export default function AboutMe() {
       />
       <StreetArtLayer sectionId="about" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-20">
+      <div className="section-container max-w-6xl mx-auto px-6 relative z-20">
         {/* Section header */}
         <motion.div
           className="mb-16"
@@ -52,7 +52,7 @@ export default function AboutMe() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Photo */}
           <motion.div
-            className="lg:col-span-4"
+            className="about-portrait lg:col-span-4"
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}

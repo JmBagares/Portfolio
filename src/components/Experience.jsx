@@ -31,7 +31,7 @@ export default function Experience() {
   return (
     <section id="experience" className="py-24 md:py-36 relative overflow-hidden" ref={sectionRef}>
       <StreetArtLayer sectionId="experience" />
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="section-container max-w-5xl mx-auto px-6 relative z-10">
         {/* Section header */}
         <motion.div
           className="mb-16 text-center"
@@ -59,7 +59,7 @@ export default function Experience() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 + index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="relative pl-16 md:pl-20"
+                className="timeline-item relative pl-16 md:pl-20"
               >
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-6 top-1 flex items-center justify-center">
@@ -76,7 +76,7 @@ export default function Experience() {
                 </div>
 
                 {/* Card */}
-                <div className="glass-card p-6 rounded-[24px] transition-all duration-300">
+                <div className="timeline-card glass-card p-6 rounded-[24px] transition-all duration-300">
                   {/* Period badge */}
                   <span className="inline-block text-xs font-semibold uppercase tracking-[0.15em] px-3 py-1 rounded-full mb-3"
                     style={{
