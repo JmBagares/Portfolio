@@ -5,7 +5,7 @@ import MagneticButton from './MagneticButton'
 import ErrorBoundary from './ErrorBoundary'
 import { useTheme } from '../theme/ThemeContext'
 import { trackEvent } from '../utils/analytics'
-import cvFile from '../assets/Jan Manuel Bagares Web Developer Resume.pdf'
+import cvFile from '../assets/Jan Manuel Bagares CV.pdf'
 
 const GridScan = lazy(() => import('./GridScan'))
 const Dither = lazy(() => import('./Dither'))
@@ -182,7 +182,7 @@ export default function Hero() {
               </MagneticButton>
               <MagneticButton
                 href={cvFile}
-                download="Jan Manuel Bagares - Frontend Developer Resume.pdf"
+                download="Jan Manuel Bagares CV.pdf"
                 aria-label="Download Jan Manuel Bagares frontend developer resume"
                 onClick={() => trackEvent('cv_download', { location: 'hero' })}
               >

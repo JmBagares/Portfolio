@@ -49,7 +49,7 @@ export default function Preloader() {
               Welcome<span>.</span>
             </span>
             <span className="preloader__tagline">
-              I&apos;m Jan Manuel, a Junior Full-Stack Developer focused on React and TypeScript. Take a look around my work.
+              I&apos;m Jan Manuel, a Junior Frontend Developer focused on React and TypeScript. Take a look around my work.
             </span>
 
             <button type="button" className="preloader__btn" onClick={handleEnter}>

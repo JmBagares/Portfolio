@@ -137,6 +137,25 @@ Output directory:
 dist
 ```
 
+## Search Appearance
+
+The portfolio uses **Jan Manuel Bagares | Junior Frontend Developer** as its homepage title. Keep the homepage, social metadata, Person structured data, and preview image consistent when changing the professional title. Mobile projects remain part of the portfolio's work history.
+
+The production host is `https://www.jmbagares.com/`; Vercel redirects the address without `www` to it. Canonical links, the sitemap, and `robots.txt` use the production host. Each case study has its own canonical URL.
+
+After deploying a search metadata change:
+
+1. Open the verified `jmbagares.com` property in [Google Search Console](https://search.google.com/search-console).
+2. Inspect `https://www.jmbagares.com/`, run **Test live URL**, then select **Request indexing**.
+3. Submit `https://www.jmbagares.com/sitemap.xml` under **Sitemaps** if it has not already been submitted.
+4. Keep public profile bios consistent with the same title where appropriate.
+
+Google chooses its own search titles, snippets, and AI Overview wording. Updates require recrawling and reprocessing and can take days to weeks; requesting indexing does not guarantee an immediate update. See [Google's title-link guidance](https://developers.google.com/search/docs/appearance/title-link) and [recrawl instructions](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
+
+The active sharing image is `public/social-preview-v3.jpg` (1200 × 630), edited with the built-in imagegen tool and exported as JPEG. A new filename avoids reusing a cached sharing image. The image-edit prompt was:
+
+> Use case: text-localization. Asset type: portfolio social sharing banner. Edit target: the supplied local social-preview-v2.jpg image. Make one precise text replacement: replace "Junior Full-Stack Developer | React & TypeScript" with exactly "Junior Frontend Developer | React & TypeScript". Preserve the name "Jan Manuel Bagares", the location "Las Piñas City, Metro Manila", all original layout, typography style, colors, cream background, teal gradients, layered glass illustration, fine lines and geometric details. Preserve the wide 1200 by 630 composition and output exactly 1200x630 if supported. Keep text crisp, correctly spelled and legible. Do not add any objects, words, logos or decorations. Opaque background. This is a minimal correction of an existing portfolio asset.
+
 ## Analytics
 
 Google Analytics 4 is free for standard usage. This project supports GA4 through the `VITE_GA_MEASUREMENT_ID` environment variable.
